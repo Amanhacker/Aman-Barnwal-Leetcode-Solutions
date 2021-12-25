@@ -1,6 +1,8 @@
 class Solution {
 public:
     
+    // Using BFS on 2D Grid
+    
     // All 4 directions : right, left, down, up
     // (0, 1), (0, -1), (1, 0), (-1, 0)
     
