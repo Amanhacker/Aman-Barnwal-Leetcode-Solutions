@@ -1,6 +1,8 @@
 class Solution {
 public:
     
+    // Using DFS
+    
     void dfs(int node, vector<int> adj[], vector<int> &vis, int &res) {
         
         vis[node] = 1;
