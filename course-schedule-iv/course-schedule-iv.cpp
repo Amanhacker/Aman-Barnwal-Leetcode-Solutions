@@ -6,20 +6,13 @@ public:
     vector<bool> checkIfPrerequisite(int numCourses, vector<vector<int>>& prereq, vector<vector<int>>& queries) {
 
         vector<bool> res;
-
-        // Use Topological sort in layerwise fashion
-
         int n = numCourses;
 
         vector<vector<int>> mat(n, vector<int>(n, INT_MAX/2));
 
         for(int i=0; i<prereq.size(); i++) {
-
-            int u = prereq[i][0];
-            int v = prereq[i][1];
-
-            // Course u needs to be completed before course v i.e u -> v
-            mat[u][v] = 1;
+            // Course prereq[i][0] needs to be completed before course prereq[i][1] i.e prereq[i][0] -> prereq[i][1]
+            mat[prereq[i][0]][prereq[i][1]] = 1;
         }
 
         // If, there are no prerequisites, then each course is independent
@@ -38,14 +31,10 @@ public:
                 }
             }
         }
-        
 
         for(int i=0; i<queries.size(); i++) {
 
-            int u = queries[i][0];
-            int v = queries[i][1];
-
-            if(mat[u][v] == INT_MAX / 2)                                    res.push_back(false);
+            if(mat[queries[i][0]][queries[i][1]] == INT_MAX/2)              res.push_back(false);
             else                                                            res.push_back(true);
         }
 
