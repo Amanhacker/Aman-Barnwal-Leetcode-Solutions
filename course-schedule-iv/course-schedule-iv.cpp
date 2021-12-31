@@ -1,18 +1,45 @@
 class Solution {
 public:
     
-    // Using Bellmann Ford Algorithm - O(n ^ 3)
+    // Using DFS
+    
+    bool dfs(int node, int dest, unordered_map<int, vector<int>> &adj, vector<int> &vis) {
+
+        // if dfs(node) leads to dest, then return true
+        if(node == dest)                                        return true;
+        if(vis[node] == 1)                                      return false;
+    
+        vis[node] = 1;
+        
+        for(int i=0; i<adj[node].size(); i++) {
+
+            int child = adj[node][i];
+            
+            if(vis[child] == 0) {
+                if(dfs(child, dest, adj, vis) == true)         return true;
+            }
+        }
+
+        return false;
+    }
 
     vector<bool> checkIfPrerequisite(int numCourses, vector<vector<int>>& prereq, vector<vector<int>>& queries) {
 
         vector<bool> res;
+
+        // Use Topological sort in layerwise fashion
+
         int n = numCourses;
 
-        vector<vector<int>> mat(n, vector<int>(n, INT_MAX/2));
+        unordered_map<int, vector<int>> adj;
 
         for(int i=0; i<prereq.size(); i++) {
-            // Course prereq[i][0] needs to be completed before course prereq[i][1] i.e prereq[i][0] -> prereq[i][1]
-            mat[prereq[i][0]][prereq[i][1]] = 1;
+
+            int u = prereq[i][0];
+            int v = prereq[i][1];
+
+            // Course u needs to be completed before course v i.e u -> v
+            adj[u].push_back(v);
         }
 
         // If, there are no prerequisites, then each course is independent
@@ -21,21 +48,17 @@ public:
             return res;
         }
 
-        // Using Bellmann Ford Algorithm
-        
-        for(int k=0; k<n; k++) {
-            for(int i=0; i<n; i++) {
-                for(int j=0; j<n; j++) {
-                    
-                    if(mat[i][j] > mat[i][k] + mat[k][j])                   mat[i][j] = mat[i][k] + mat[k][j];
-                }
-            }
-        }
+        vector<int> vis(n, 0);
 
         for(int i=0; i<queries.size(); i++) {
 
-            if(mat[queries[i][0]][queries[i][1]] == INT_MAX/2)              res.push_back(false);
-            else                                                            res.push_back(true);
+            int u = queries[i][0];
+            int v = queries[i][1];
+            
+            // Make all the nodes unvisited
+            fill(vis.begin(), vis.end(), 0);
+            
+            res.push_back(dfs(u, v, adj, vis));
         }
 
         return res;
