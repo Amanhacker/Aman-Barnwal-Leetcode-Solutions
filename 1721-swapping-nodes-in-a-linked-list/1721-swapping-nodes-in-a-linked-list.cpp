@@ -18,7 +18,6 @@ public:
         if(res == NULL)                                          return res;
         
         // Swap kth node from beginning with kth node from end considering 1-indexing
-        
         int len = 0;
         
         ListNode* t = head;
@@ -28,9 +27,7 @@ public:
             len++;
         }
         
-        cout << len << endl;
-        
-        // (k - 1) node with (len - k - 1) node
+        // (k - 1) node with (len - k) node
         int i = 0;
         ListNode* temp1 = head;
         
@@ -39,9 +36,7 @@ public:
             i++;
         }
         
-        cout << temp1->val << endl;
-        
-        // Here temp node is the 1st node which needs to be swapped
+        // Here temp1 node is the 1st node which needs to be swapped
         i = 0;
         
         ListNode* temp2 = head;
@@ -50,8 +45,6 @@ public:
             temp2 = temp2->next; 
             i++;
         }
-        
-        cout << temp2->val << endl;
         
         // Now, swap temp1 node with temp2
         swap(temp1->val, temp2->val);
