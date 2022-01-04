@@ -9,8 +9,8 @@ public:
     
     void push(int val) {
         
-        if(s.empty() == true)               s.push_back({val,val});
-        else                                s.push_back({val,min(s.back().second,val)});   
+        if(s.empty() == true)               s.push_back({val, val});
+        else                                s.push_back({val, min(s.back().second, val)});   
         
         return;
     }
