@@ -15,26 +15,20 @@ public:
     
         ListNode* t = head;
         
-        int len = 0;
+        if(head->next == NULL)                                  return head;
         
-        while(t != NULL) {
-            t = t->next;
-            len++;
+        // Using Slow and Fast Pointers
+        
+        ListNode* slow = head;
+        ListNode* fast = head->next->next;
+        
+        while(fast != NULL && fast->next != NULL) {
+            fast = fast->next->next;
+            slow = slow->next;
         }
         
-        // Middle node is at position (len / 2), considering 0-based indexing
-        int pos = len / 2;
-        int i = 0;
-        
-        ListNode* temp = head;
-        
-        while(i < pos) {
-            temp = temp->next;    
-            i++;
-        }
-        
-        // Here, temp node is the middle node
-        return temp;
+        // Here, slow node is one node before the middle node
+        return slow->next;
     }
     
 };
