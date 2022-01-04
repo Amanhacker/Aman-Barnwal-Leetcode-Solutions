@@ -11,43 +11,22 @@
 class Solution {
 public:
     
-    void addNodeAtBeginning(ListNode** head, int val) {
-        
-        ListNode* temp = new ListNode(val);
-        
-        if(head == NULL) {
-            *head = temp;
-            return;
-        }
-        
-        else {
-            temp->next = *head;
-            *head = temp;
-        }
-
-        return;
-    }
     
     ListNode* deleteDuplicates(ListNode* head) {
     
-        vector<int> v;
-        
         ListNode* temp = head;
         
-        while(temp != NULL) {
-            if(find(v.begin(), v.end(), temp->val) == v.end())              v.push_back(temp->val);
-            temp = temp->next;
+        while(temp != NULL && temp->next != NULL) {
+            
+            if(temp->val == temp->next->val) {
+                temp->next = temp->next->next;                  // Removing Duplicates
+            }
+            else {
+                temp = temp->next;
+            }
         }
         
-        reverse(v.begin(), v.end());
-        ListNode* res = NULL;
-        
-        for(auto &x : v) {
-            addNodeAtBeginning(&res, x);
-        }
-        
-        
-        return res;
+        return head;
     }
     
 };
