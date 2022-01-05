@@ -27,7 +27,10 @@ public:
         if(head == NULL)                                    return true;
         if(root == NULL && head != NULL)                    return false;
         
-        bool check = head->val == root->val;
+        bool check;
+        
+        if(head->val == root->val)                          check = true;
+        else                                                check = false;
         
         if(check == false)                                  return false;
         
