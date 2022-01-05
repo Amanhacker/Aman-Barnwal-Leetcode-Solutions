@@ -11,23 +11,6 @@
 class Solution {
 public:
     
-    void addNodeAtBeginning(ListNode** head, int val) {
-        
-        ListNode* temp = new ListNode(val);
-        
-        if(head == NULL) {
-            *head = temp;
-            return;
-        }
-        
-        else {
-            temp->next = *head;
-            *head = temp;
-        }
-        
-        return;
-    }
-    
     void reorderList(ListNode* head) {
     
         ListNode* res = NULL;
@@ -51,10 +34,15 @@ public:
         
         if(i == j)                                       reorderV.push_back(v[i]);
         
-        reverse(reorderV.begin(), reorderV.end());
+        ListNode* t = new ListNode(reorderV[0]);
+        res = t;
         
-        for(auto &x : reorderV) {
-            addNodeAtBeginning(&res, x);
+        for(int i=1; i<n; i++) {
+            
+            ListNode* node = new ListNode(reorderV[i]);
+            
+            t->next = node;
+            t = node;
         }
         
         *head = *res;
