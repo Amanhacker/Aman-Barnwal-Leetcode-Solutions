@@ -56,7 +56,6 @@ public:
         
         // Convert it into height balanced BST
         
-        int mid = v.size() / 2;
         int n = v.size();
         
         TreeNode* ans = convertBST(v, 0, n-1);
