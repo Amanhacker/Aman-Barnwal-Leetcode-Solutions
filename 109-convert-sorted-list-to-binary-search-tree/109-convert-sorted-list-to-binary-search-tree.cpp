@@ -22,45 +22,28 @@
 class Solution {
 public:
    
-    TreeNode* convertBST(vector<int> v, int start, int end) {
-        
-        TreeNode* root = NULL;
-        
-        if(start > end)                                                    return NULL;
-        
-        int mid = start + (end - start) / 2;
-        
-        root = new TreeNode(v[mid]);
-        
-        root->left = convertBST(v, start, mid - 1);
-        root->right = convertBST(v, mid + 1, end);
-        
-        return root;
-    }
+    // Using fast and slow pointers
+   
+    TreeNode* sortedListToBST(ListNode* head, ListNode* tail = NULL) {
     
-    TreeNode* sortedListToBST(ListNode* head) {
-    
-        TreeNode* res = NULL;
+        if(head == tail)                                                    return NULL;
         
-        if(head == NULL)                                                    return res;
+        ListNode* fast = head;
+        ListNode* slow = head;
         
-        vector<int> v;
-        ListNode* temp = head;
-        
-        while(temp != NULL) {
-            v.push_back(temp->val);
-            temp = temp->next;
+        while(fast != tail && fast->next != tail) {
+            slow = slow->next;
+            fast = fast->next->next;
         }
         
-        // v contains element in ascending order
+        // Here, slow moves to middle node every time, fast to last node
         
-        // Convert it into height balanced BST
+        TreeNode* root = new TreeNode(slow->val);
+            
+        root->left = sortedListToBST(head, slow);
+        root->right = sortedListToBST(slow->next, tail);
         
-        int n = v.size();
-        
-        TreeNode* ans = convertBST(v, 0, n-1);
-        
-        return ans;
+        return root;
     }
     
 };
