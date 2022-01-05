@@ -12,41 +12,32 @@ class Solution {
 public:
     
     void reorderList(ListNode* head) {
-    
-        ListNode* res = NULL;
         
-        vector<int> v, reorderV;
-        ListNode* temp = head;
+        // Base case 
+        // if the size of Linked List <= 2 just return it
         
-        while(temp != NULL) {
-            v.push_back(temp->val);
-            temp = temp->next;
+        if(head == NULL || head->next == NULL || head->next->next == NULL)                       return;
+        
+        // Find the Penultimate node i.e 2nd last node of the Linked List
+        ListNode* penultimate = head;
+        
+        while(penultimate->next->next != NULL) {
+            penultimate = penultimate->next;    
         }
         
-        int n = v.size();
-        int i, j;
+        // Here, the penultimate node is 2nd last node of LL
+        // Link the last element with the 2nd element from start
         
-        // Now, rearrange the vector
-        for(i=0, j=n-1; i<j; i++, j--) {
-            reorderV.push_back(v[i]);
-            reorderV.push_back(v[j]);
-        }
+        // Here, last element is the penultimate->next
+        penultimate->next->next = head->next;
+        head->next = penultimate->next;
         
-        if(i == j)                                       reorderV.push_back(v[i]);
+        // Again set the Penultimate as the last node i.e Set the last node to be NULL
+        penultimate->next = NULL;
         
-        ListNode* t = new ListNode(reorderV[0]);
-        res = t;
-        
-        for(int i=1; i<n; i++) {
-            
-            ListNode* node = new ListNode(reorderV[i]);
-            
-            t->next = node;
-            t = node;
-        }
-        
-        *head = *res;
-        
+        // Do the above steps recursive
+        reorderList(head->next->next);
+
         return;
     }
     
