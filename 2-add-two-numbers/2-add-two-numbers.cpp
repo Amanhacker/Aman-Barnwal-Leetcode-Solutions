@@ -11,40 +11,17 @@
 class Solution {
 public:
     
-    // Reverse a Linked List
-    void reverseLinkedList(ListNode** head) {
-        
-        ListNode* cur = *head;
-        ListNode* temp = NULL;
-        
-        while(cur != NULL) {
-            
-            ListNode* t = cur->next;
-            cur->next = temp;
-            
-            temp = cur;
-            cur = t;
-        }
-        
-        *head = temp;
-        return;
-    }
-    
     // Add Node at Beginning of Linked List
-    void addNodeAtBeginning(ListNode** head, int val) {
+    void addNodeAtLast(ListNode** head, int val) {
         
         ListNode* temp = new ListNode(val);
+        ListNode* last = *head;
         
-        if(head == NULL) {
-            *head = temp;
-            return;
+        while(last->next != NULL) {
+            last = last->next;
         }
-        
-        else {
-            temp->next = *head;
-            *head = temp;
-        }
-        
+
+        last->next = temp;
         return;
     }
     
@@ -60,6 +37,7 @@ public:
         ListNode* res1 = NULL, *res2 = NULL;
         
         int carry = 0;
+        int i = 0;
         
         while(l1 != NULL && l2 != NULL) {
             
@@ -77,7 +55,10 @@ public:
             l1 = l1->next;
             l2 = l2->next;
             
-            addNodeAtBeginning(&res, val);
+            if(i == 0)                                                  res = new ListNode(val);
+            else                                                        addNodeAtLast(&res, val);
+            
+            i++;
         }
         
         while(l1 != NULL) {
@@ -94,7 +75,11 @@ public:
             }
             
             l1 = l1->next;
-            addNodeAtBeginning(&res, val);
+            
+            if(i == 0)                                                  res = new ListNode(val);
+            else                                                        addNodeAtLast(&res, val);
+            
+            i++;
         }
         
         while(l2 != NULL) {
@@ -111,14 +96,21 @@ public:
             }
             
             l2 = l2->next;
-            addNodeAtBeginning(&res, val);
+            
+            if(i == 0)                                                  res = new ListNode(val);
+            else                                                        addNodeAtLast(&res, val);
+            
+            i++;
         }
         
         if(carry > 0) {
-            addNodeAtBeginning(&res, carry);
+            
+            if(i == 0)                                                  res = new ListNode(carry);
+            else                                                        addNodeAtLast(&res, carry);
+            
+            i++;
         }
         
-        reverseLinkedList(&res);
         
         return res;
     }
