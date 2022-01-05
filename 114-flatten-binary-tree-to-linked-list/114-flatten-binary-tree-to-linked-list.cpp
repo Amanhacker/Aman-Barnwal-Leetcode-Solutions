@@ -12,30 +12,38 @@
 class Solution {
 public:
     
+    // Using Morris Traversal Algorithm
+    
     void flatten(TreeNode* root) {
     
         if(root == NULL)                                                return;
         
-        TreeNode* tempLeft = root->left;
-        TreeNode* tempRight = root->right;
-        
-        // Make the left child of node to be NULL
-        root->left = NULL;
-      
-        flatten(tempLeft);
-        flatten(tempRight);
-      
-        // Append tempLeft to right of root node
-        root->right = tempLeft;
-        
-        // Now, go to last node of tempLeft and append it to tempRight
-        TreeNode* temp = root;
-        
-        while(temp->right != NULL) {
-            temp = temp->right;
+        while(root != NULL) {
+            
+            if(root->left != NULL) {
+                
+                TreeNode* left = root->left;
+                TreeNode* cur = root->left;
+                
+                // Go to extreme right node of cur
+                while(cur->right != NULL) {
+                    cur = cur->right;
+                }
+                
+                // Here, cur is the extreme right node of left subtree
+                // So, attach cur->right to right of root
+                cur->right = root->right;
+                
+                // Make left of root to be NULL
+                root->left = NULL;
+                
+                // Attach left subtree to right of root
+                root->right = left;
+            }
+            
+            root = root->right;
         }
         
-        temp->right = tempRight;
         return;
     }
     
