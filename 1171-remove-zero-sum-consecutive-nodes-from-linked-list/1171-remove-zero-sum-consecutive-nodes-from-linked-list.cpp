@@ -11,49 +11,6 @@
 class Solution {
 public:
     
-    void removeHelper(vector<int> &v, int iH, int jH, int sizeEarlier) {
-        
-        // if(sizeEarlier == v.size())                                       return;
-        
-        for(int i=iH; i<v.size()-1; i++) {
-            for(int j=jH; j<v.size(); j++) {
-                
-                int sum = 0;
-                
-                // Subarray is from index i to j
-                for(int k=i; k<=j; k++)                     sum += v[k];
-                
-                if(sum == 0) {
-                    
-                    // Remove elements from vector v from range [i, j]
-                    int siz = j - i + 1;
-                    
-                    while(siz--) {
-                        v.erase(v.begin() + i);
-                    }
-                    
-                    // Initialize i and j, because we have already erased some elements of vector v
-                    int sizeEarlier = v.size();
-                    
-                    if(v.size() > 0) {
-                        
-                        i = 0;
-                        j = i + 1;
-                        
-                        int siz = v.size();
-                        
-                        if(siz == sizeEarlier)                                          return;
-                        
-                        // Again, call the function for deletion of elements on modified vector v
-                        removeHelper(v, i, j, sizeEarlier);
-                    }
-                }
-            }
-        }
-        
-        return;
-    }
-    
     ListNode* removeZeroSumSublists(ListNode* head) {
     
         ListNode* res = NULL;
@@ -73,17 +30,12 @@ public:
         
         int i = 0, j = 1;
         
-        for(auto &x : v)        cout << x << " ";
-        cout << endl;
-        
         // Remove those elements whose subarray sum is zero
-        // removeHelper(v, i, j, n);
         
         bool flag = true;
         
         while(flag == true) {
             
-            cout << "Aman" << endl;
             if(v.size() == 0)                                                       return res;
             
             int n = v.size();
@@ -105,26 +57,12 @@ public:
                             v.erase(v.begin() + i);
                         }
                         
-                        for(auto &x : v)    cout << x << " ";
-                        cout << endl;
-                        
-                        // i = n;
-                        // j = n;
-                        
                         if(v.size() == 0)                                           return res;
-                        // Initialize i and j, because we have already erased some elements of vector v
-                        // i = 0;
-                        // j = 1;
                     }
                 }
             }
             
             if(v.size() == 0)                                                       return res;
-            
-            cout << "Aman" << endl;
-            
-            for(auto &x : v)    cout << x << " ";
-            cout << endl;
             
             // If after running 2 for loops, no element is deleted from vector, then come out of while loop
             if(n == v.size()) {
