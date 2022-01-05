@@ -11,23 +11,6 @@
 class Solution {
 public:
     
-//     void addNodeAtBeginning(ListNode** head, int val) {
-        
-//         ListNode* temp = new ListNode(val);
-        
-//         if(head == NULL) {
-//             *head = temp;
-//             return;
-//         }
-        
-//         else {
-//             temp->next = *head;
-//             *head = temp;
-//         }
-        
-//         return;
-//     }
-    
     ListNode* reverseEvenLengthGroups(ListNode* head) {
     
         ios_base::sync_with_stdio(false);
@@ -85,7 +68,7 @@ public:
         ListNode* t = NULL;
         t = new ListNode(v[0]);
         
-        res = t;
+        res = t;    
         
         for(int i=1; i<n; i++) {
             
@@ -94,13 +77,6 @@ public:
             
             t = node;
         }
-        
-//         reverse(v.begin(), v.end());
-        
-//         for(auto &x : v) {
-//             cout << x << " ";
-//             addNodeAtBeginning(&res, x);
-//         }
         
         return res;
     }
