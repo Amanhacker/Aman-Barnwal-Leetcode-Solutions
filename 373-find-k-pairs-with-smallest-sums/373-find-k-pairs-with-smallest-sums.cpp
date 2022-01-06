@@ -22,7 +22,7 @@ public:
 
             res.push_back(vector<int>({nums1[i],nums2[j]}));
 
-            if(j + 1 < nums2.size())                            pq.push({nums1[i]+nums2[j+1], vector<int>({i, j + 1})});
+            if(j + 1 < nums2.size())                            pq.push({nums1[i] + nums2[j + 1], vector<int>({i, j + 1})});
         }
         
         return res;
