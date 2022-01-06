@@ -1,26 +1,34 @@
 class Solution {
 public:
     
+    // Using Binary Search
     int kthSmallest(vector<vector<int>>& mat, int k) {
     
         int n = mat.size();
-        priority_queue<int, vector<int>, greater<int>> pq;
         
-        for(auto &x : mat) {
-            for(auto &x1 : x)                       pq.push(x1);
+        int low = mat[0][0];
+        int high = mat[n-1][n-1] + 1;
+        
+        while(low < high) {
+            
+            int mid = low + (high - low) / 2;
+            
+            int ind = n - 1;
+            int count = 0;
+            
+			// For each row, we count the elements that are smaller then mid
+            
+            for(int i=0; i<n; i++) {
+                
+                while(ind >= 0 && mat[i][ind] > mid)                        ind--;
+                count += ind + 1;
+            }
+            
+            if(count < k)                                                   low = mid + 1;
+            else                                                            high = mid;
         }
         
-        int i = 0;
-        
-        while(pq.empty() == false) {
-            
-            i++;
-            
-            if(i == k)                              break;
-            pq.pop();
-        }
-        
-        return pq.top();
+        return low;
     }
     
 };
