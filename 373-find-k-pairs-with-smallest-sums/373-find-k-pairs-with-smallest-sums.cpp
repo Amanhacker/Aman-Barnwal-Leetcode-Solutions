@@ -7,7 +7,7 @@ public:
         
         if(nums1.size() == 0 || nums2.size() == 0)              return res;
         
-        using pi = pair<int, vector<int>>;                      // 1st arg - sum, 2nd arg - pair
+        using pi = pair<int, vector<int>>;                      // 1st arg - sum, 2nd arg - vector of pairs
         priority_queue<pi, vector<pi>, greater<pi>> pq;         // Min Heap
         
         for(int i=0; i<nums1.size(); i++)                      pq.push({nums1[i] + nums2[0], vector<int>({i, 0})});
