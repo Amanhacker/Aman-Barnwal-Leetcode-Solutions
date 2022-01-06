@@ -16,7 +16,7 @@ public:
             int ind = n - 1;
             int count = 0;
             
-			// For each row, we count the elements that are smaller then mid
+			// For each row, we count the elements that are smaller than mid
             
             for(int i=0; i<n; i++) {
                 
