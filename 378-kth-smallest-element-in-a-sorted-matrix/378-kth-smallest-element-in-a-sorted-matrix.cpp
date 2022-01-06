@@ -13,7 +13,7 @@ public:
             
             int mid = low + (high - low) / 2;
             
-            int ind = n - 1;
+            int ind = n - 1;            // jth index
             int count = 0;
             
 			// For each row, we count the elements that are smaller than mid
