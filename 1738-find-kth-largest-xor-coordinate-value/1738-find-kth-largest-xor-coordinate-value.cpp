@@ -14,8 +14,8 @@ public:
         priority_queue<int> pq;
         
         int temp = 0;                                           // XORing with 0 will not change the value
-        // Use Prefix sum method to fill XOR of matrix
         
+        // Use Prefix sum method to fill XOR of matrix
         for(int i=0; i<n; i++) {
             
             // ith row
