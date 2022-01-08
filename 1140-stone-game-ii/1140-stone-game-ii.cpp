@@ -38,7 +38,7 @@ public:
         // Let Alice collects total a amount, and Bob collects total b amount, and maxDiff between them is maxDiff
         // i.e 1). a + b = sum, and 2). maxDiff = a - b, so a = (sum + maxDiff) / 2;
         
-        // Calculate the net max difference possible
+        // Calculate the net max difference possible between the stones collected by Alice and Bob, considering Alice always collect more stones than Bob
         
         int maxDiff = findMaxDiff(n, piles, 0, 1, dp);
         int res = (sum + maxDiff) / 2;
