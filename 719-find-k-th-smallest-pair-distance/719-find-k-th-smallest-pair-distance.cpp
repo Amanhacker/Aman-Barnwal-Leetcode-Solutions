@@ -11,7 +11,7 @@ public:
             while(j < n && a[j] - a[i] <= mid)                     j++;
             
             j--;
-            total += j - i;
+            total += j - i;                     // No.of pairs which I can form having diff <= mid
         }
         
         if(total >= k)                                              return true;
