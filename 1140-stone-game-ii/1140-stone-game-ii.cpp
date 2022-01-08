@@ -12,6 +12,7 @@ public:
         
         int ans = INT_MIN, sumTemp = 0;
         
+        // Starting from j stone and reach upto j + x - 1 stones
         for(int j=i; j < n && j - i + 1 <= 2*m; j++) {
             
             sumTemp += piles[j];
