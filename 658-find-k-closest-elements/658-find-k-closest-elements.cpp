@@ -38,18 +38,12 @@ public:
                 
                 while(pq1.empty() == false) {
                     temp.push_back(pq1.top());
-                    cout << pq1.top() << " ";
                     pq1.pop();
                 }
-                
-                break;
             }
             
             if(pq1.empty() == false)                                pq1.pop();
         }
-        
-        cout << endl;
-        cout << "Aman" << endl;
         
         // Min Heap
         
@@ -60,7 +54,6 @@ public:
                 
                 while(pq2.empty() == false) {
                     temp.push_back(pq2.top());
-                    cout << pq2.top() << " ";
                     pq2.pop();
                 }
             }
