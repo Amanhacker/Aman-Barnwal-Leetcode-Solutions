@@ -1,6 +1,8 @@
 class Solution {
 public:
     
+    // Using Min Heap
+    
     int furthestBuilding(vector<int>& h, int bricks, int ladders) {
     
         int n = h.size();
