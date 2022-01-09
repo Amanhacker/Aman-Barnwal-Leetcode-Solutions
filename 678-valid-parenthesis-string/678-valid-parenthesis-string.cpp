@@ -6,7 +6,7 @@ public:
         int n = s.length();
         stack<int> open, star;
         
-        for(int i=0; s[i]!='\0'; i++) {
+        for(int i=0; i<n; i++) {
             
             if(s[i] == '(')                                         open.push(i);
             else if(s[i] == '*')                                    star.push(i);
