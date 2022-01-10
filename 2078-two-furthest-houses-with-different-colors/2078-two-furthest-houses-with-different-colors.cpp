@@ -3,15 +3,20 @@ public:
     
     int maxDistance(vector<int>& col) {
     
-        int res = INT_MIN;
+        int res;
         int n = col.size();
         
-        for(int i=0; i<n-1; i++) {
-            for(int j=i+1; j<n; j++) {
-                if(col[i] != col[j])                            res = max(res, j - i);
-            }
-        }
+        // i is the leftmost position of the color different from the last color.
+        // j is the rightmost position of the color different from the first one.
         
+        // Therefore, we need to return the maximum of two cases: max(j, n - i - 1), where
+
+        int i = 0, j = n - 1; 
+        
+        while(col[0] == col[j])                             j--;
+        while(col[n-1] == col[i])                           i++;
+        
+        res = max(j, n - i - 1);
         return res;
     }
     
