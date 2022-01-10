@@ -4,8 +4,6 @@ public:
     int sumBase(int n, int k) {
     
         int sum = 0;
-        int temp = n;
-        
         vector<int> digits;
         
         // First, convert the number n from base 10 to base k
