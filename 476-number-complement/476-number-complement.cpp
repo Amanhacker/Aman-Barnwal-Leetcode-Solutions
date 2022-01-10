@@ -3,10 +3,16 @@ public:
     
     int findComplement(int n) {
         
-        unsigned mask = ~0;
-        while(mask & n)                                 mask = mask << 1;
+        // Basic idea is to find the smallest power of 2 that is larger than num, and output the difference between powerof2s and num .
         
-        return ~n ^ mask;
+        long powerof2s = 2, temp = n;
+        
+        while(temp >> 1) {
+            temp >>= 1;
+            powerof2s <<= 1;
+        }
+        
+        return (powerof2s - n - 1);
     }
     
 };
