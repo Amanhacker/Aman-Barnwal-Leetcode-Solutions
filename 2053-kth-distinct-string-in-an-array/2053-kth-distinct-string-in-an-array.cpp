@@ -1,10 +1,6 @@
 class Solution {
 public:
     
-    static bool cmp(const pair<int, string> &a, const pair<int, string> &b) {
-        return a.first < b.first;
-    }
-    
     string kthDistinct(vector<string>& v, int k) {
     
         string res = "";
@@ -24,7 +20,7 @@ public:
             if(x.second.second == 1)                            d.push_back({x.second.first, x.first});
         }
         
-        sort(d.begin(), d.end(), cmp);
+        sort(d.begin(), d.end());
         if(d.size() < k)                                        return res;
         
         res = d[k-1].second;
