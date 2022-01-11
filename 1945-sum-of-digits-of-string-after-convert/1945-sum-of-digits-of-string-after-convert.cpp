@@ -18,10 +18,7 @@ public:
         while(k--) {
             
             sum = 0;
-            
-            for(int i=0; i<temp.size(); i++) {
-                sum += (int)(temp[i]) - 48;   
-            }
+            for(int i=0; i<temp.size(); i++)                sum += (int)(temp[i]) - 48;   
             
             temp = to_string(sum);
         }
