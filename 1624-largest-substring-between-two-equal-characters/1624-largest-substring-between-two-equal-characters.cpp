@@ -3,25 +3,15 @@ public:
     
     int maxLengthBetweenEqualCharacters(string s) {
     
-        int ans = -1;
-        int n = s.length();
+        int maxi = -1;
+        vector<int> v(26, -1);
         
-        for(int i=0; i<n; i++) {
-            
-            char ch = s[i];
-            
-            for(int k=n-1; k>=i+1; k--) {
-                
-                if(ch == s[k]) {
-                    ans = max(ans, k-1 - (i+1) + 1);
-                    break;
-                }
-            }
-            
+        for (int i = 0; i < s.size(); i++) {
+            if(v[s[i] - 'a'] == -1)                            v[s[i] - 'a'] = i;
+            else                                               maxi = max(maxi, abs(v[s[i] - 'a'] - i) - 1);      
         }
         
-        
-        return ans;
+        return maxi;
     }
     
 };
