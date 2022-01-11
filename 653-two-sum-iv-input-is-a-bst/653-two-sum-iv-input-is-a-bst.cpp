@@ -12,36 +12,17 @@
 class Solution {
 public:
     
-    void inorder(TreeNode* root, vector<int> &res) {
-        
-        if(root == NULL)                                            return;
-        
-        inorder(root->left, res);
-        res.push_back(root->val);
-        inorder(root->right, res);
-        
-        return;
-    }
+    set<int> w;
     
     bool findTarget(TreeNode* root, int k) {
     
         if(root == NULL)                                            return false;
         
-        vector<int> a;
-        inorder(root, a);
+        if(w.count(k - root->val) == true)                          return true;
         
-        int i = 0, j = a.size() - 1;
+        w.insert(root->val);
         
-        // Now, res is the sorted array
-        
-        while(i < j) {
-            
-            if(a[i] + a[j] == k)                                   return true;
-            else if(a[i] + a[j] > k)                               j--;
-            else                                                   i++;
-        }
-        
-        return false;
+        return findTarget(root->left, k) || findTarget(root->right, k);
     }
     
 };
