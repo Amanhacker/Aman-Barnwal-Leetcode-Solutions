@@ -21,10 +21,8 @@ public:
         
         int noGroups, firstGroupNo = 0;
         
-        if(noLetters % k != 0) {
-            // First group is having no.os letters < k
-            firstGroupNo = noLetters % k;
-        }
+        // First group is having no.os letters < k
+        firstGroupNo = noLetters % k;
         
         noGroups = noLetters / k;
         int i = 0;
