@@ -33,11 +33,18 @@ public:
         // 3rd digit - [0, 5]           i.e     i = 3
         // 4th digit - [0, 9]           i.e     i = 4
         
-        for(int i=0; i<time.length(); i++) {
-            if(time[i] == '?')                      time[i] = findRequired(i, time);
-        }
+        time[0] = time[0] != '?' ? time[0] : (time[1] == '?' || time[1] <= '3') ? '2' : '1';
+        time[1] = time[1] != '?' ? time[1] : time[0] == '2' ? '3' : '9';
+        time[3] = time[3] != '?' ? time[3] : '5';
+        time[4] = time[4] != '?' ? time[4] : '9';
         
         return time;
+        
+//         for(int i=0; i<time.length(); i++) {
+//             if(time[i] == '?')                      time[i] = findRequired(i, time);
+//         }
+        
+//         return time;
     }
     
 };
