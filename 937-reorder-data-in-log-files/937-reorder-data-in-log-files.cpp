@@ -23,17 +23,10 @@ public:
         string log1 = a.substr(ind1 + 1, a.length() - ind1);
         string log2 = b.substr(ind2 + 1, b.length() - ind2);
         
-        string iden1 = a.substr(0, ind1);
-        string iden2 = b.substr(0, ind2);
-        
         // Identifier is from [0, ind - 1], and logs are from [ind + 1, len - ind - 1 + 1]
         
-        if(log1 != log2) {
-            if(log1 < log2)                                return true;
-            else                                           return false;
-        }
-        
-        return a < b;
+        if(log1 != log2)                                    return log1  < log2;
+        else                                                return a < b;
     }
     
     vector<string> reorderLogFiles(vector<string>& logs) {
