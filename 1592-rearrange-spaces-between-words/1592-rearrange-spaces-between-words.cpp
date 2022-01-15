@@ -33,13 +33,6 @@ public:
         
         int noWords = words.size();
         
-        for(auto &x : words)                                cout << x << " ";
-        cout << endl;
-        
-     
-        
-        cout << noWords << endl;
-        
         if(noWords == 1) {
             res += words[0];
             
@@ -50,16 +43,12 @@ public:
         }
         
         int spacesExtra, spacesBetweenWords;
-        
         spacesExtra = noSpaces % (noWords - 1);
 
         if(spacesExtra == 0) {
             // Then we can put these spaces between each word  
             spacesBetweenWords = noSpaces / (noWords - 1);
         } 
-        
-        cout << spacesExtra << endl;
-        cout << spacesBetweenWords << endl;
         
         // Else put extra spaces at the last
         
