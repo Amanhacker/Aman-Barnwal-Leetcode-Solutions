@@ -10,8 +10,6 @@ public:
             
             if(name[i] == typed[j]) {
 
-                cout << i << " " << j << endl;
-                
                 int countInName = 1, countInTyped = 1;
                 char ch = name[i];
                 
@@ -27,8 +25,6 @@ public:
                 
                 i++;
                 j++;
-                
-                cout << ch << " " << countInName << " " << countInTyped << endl;
                 
                 if(countInName > countInTyped)                                  return false;
                 
