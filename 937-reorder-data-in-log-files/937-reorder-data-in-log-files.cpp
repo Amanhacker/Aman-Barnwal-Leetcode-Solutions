@@ -80,9 +80,6 @@ public:
         
         sort(letterLogs.begin(), letterLogs.end(), cmp);
         
-        for(auto &x : letterLogs)           cout << x << " ";
-        cout << endl;
-        
         for(auto &x : letterLogs)                           res.push_back(x);
         for(auto &x : digitLogs)                            res.push_back(x);
         
