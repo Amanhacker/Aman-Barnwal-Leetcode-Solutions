@@ -21,6 +21,7 @@ public:
         
         res += d;
         
+        // In case of Feb, no.of days is 29 instead of 28
         if(m > 2 && isLeap(y) == true)                          res++;
         
         for(int i=0; i<=m-2; i++)                               res += days[i];
