@@ -1,15 +1,39 @@
 class Solution {
 public:
     
-    static bool cmp(const string &s1, const string &s2) {
+    static bool cmp(const string &a, const string &b) {
         
-        // Get the substrings after the first white space character
+        string word1 = "", word2 = "";
+        int ind1, ind2;
         
-        string aa = s1.substr(s1.find(' '));
-        string bb = s2.substr(s2.find(' '));
+        for(int i=0; i<a.length(); i++) {
+            if(a[i] == ' ') {
+                ind1 = i;
+                break;
+            }
+        }
         
-		//if the substrings are equal, decide the order based on , else decide with respect to substrings
-        return aa == bb ? s1 < s2 : aa < bb;
+        for(int j=0; j<b.length(); j++) {
+            if(b[j] == ' ') {
+                ind2 = j;
+                break;
+            }
+        }
+        
+        string log1 = a.substr(ind1 + 1, a.length() - ind1);
+        string log2 = b.substr(ind2 + 1, b.length() - ind2);
+        
+        string iden1 = a.substr(0, ind1);
+        string iden2 = b.substr(0, ind2);
+        
+        // Identifier is from [0, ind - 1], and logs are from [ind + 1, len - ind - 1 + 1]
+        
+        if(log1 != log2) {
+            if(log1 < log2)                                return true;
+            else                                           return false;
+        }
+        
+        return a < b;
     }
     
     vector<string> reorderLogFiles(vector<string>& logs) {
