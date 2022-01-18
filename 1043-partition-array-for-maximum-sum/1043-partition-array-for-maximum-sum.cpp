@@ -1,6 +1,6 @@
 class Solution {
 public:
-   
+  
     int helperMaxSum(vector<int> &a, int n, int k, int pos, int &res, vector<int> &dp) {
         
         // Base Condition
@@ -9,6 +9,9 @@ public:
         
         int maxEle = 0;
         
+        // For each position pos, increase your subarray size i from 0 to k - 1, tracking the max value maxEle so far. 
+        // The sum of the subarray is maxEle * (i + 1).
+
         for(int i = 0; i < k && pos + i < n; i++) {
            
             maxEle = max(maxEle, a[pos + i]);
@@ -17,6 +20,7 @@ public:
             res = max(res, temp);
         }
         
+        // Use memoisation to track the maximum sum for the position (dp).
         dp[pos] = res;
         return res;
     }
