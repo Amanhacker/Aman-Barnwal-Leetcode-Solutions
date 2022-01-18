@@ -1,15 +1,21 @@
 class Solution {
 public:
 
-    bool isPalindrome(string s) {
+    void extendPalindrome(string s, int left, int right, int &count) {
         
         int n = s.length();
+
+        if(left < 0 || right >= n)                  return;
         
-        for(int i=0, j=n-1; i<=j; i++, j--) {
-            if(s[i] != s[j])                                return false;
-        }
+        while(left >=0 && right < n && s[left] == s[right]) {
+            
+            left--;
+            right++;
+            
+            count++;
+        }        
         
-        return true;
+        return;
     }
     
     int countSubstrings(string s) {
@@ -17,17 +23,14 @@ public:
         int count = 0;
         int n = s.length();
         
-        // Generate all substring
+        if(n == 0)                                         return 0;
         
         for(int i=0; i<n; i++) {
-            for(int j=i; j<n; j++) {
-                
-                // Substring is from index [i, j]
-                int len = j - i + 1;
-                string temp = s.substr(i, len);
-                
-                if(isPalindrome(temp) == true)                  count++;
-            }
+            
+            // Considering i as the mid point
+            
+            extendPalindrome(s, i, i, count);              // Odd length
+            extendPalindrome(s, i, i + 1, count);          // Even length
         }
         
         return count;        
