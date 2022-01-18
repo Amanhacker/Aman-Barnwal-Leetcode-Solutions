@@ -10,7 +10,8 @@ public:
         
         // dp(i) = cost to fulfill your travel plan from day 1 to day i. 
         
-        unordered_set<int> travel(days.begin(), days.end());
+        unordered_set<int> travel;
+        for(auto &x : days)                                         travel.insert(x);
         
         for(int i=1; i<=365; i++) {
             
