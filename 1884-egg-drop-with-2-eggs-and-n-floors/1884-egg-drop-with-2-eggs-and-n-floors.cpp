@@ -11,7 +11,6 @@ public:
 
         if(dp[e][n] != -1)      return dp[e][n];
 
-
         int mini = INT_MAX;
 
         for(int k=1; k<=n; k++){
@@ -43,7 +42,7 @@ public:
         vector<vector<int>> dp;
         dp.resize(e + 1, vector<int>(n + 1, -1));
         
-        return findNoOfAttempts(2, n, dp);
+        return findNoOfAttempts(e, n, dp);
     }
     
 };
