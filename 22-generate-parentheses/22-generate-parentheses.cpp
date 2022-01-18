@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    // Using Backtracking
+    // Using Recursion
     
     void generateHelper(string temp, vector<string> &res, int n, int noOpenB, int noCloseB) {
         
