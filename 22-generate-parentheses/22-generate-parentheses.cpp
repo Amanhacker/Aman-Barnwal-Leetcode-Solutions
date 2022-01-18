@@ -3,7 +3,7 @@ public:
 
     // Using Backtracking
     
-    void generateHelper(string temp, vector<string> &res, int n, int open, int close) {
+    void generateHelper(string temp, vector<string> &res, int n, int noOpenB, int noCloseB) {
         
         // Base Condition i.e n pairs
         if(temp.length() == n * 2) {
@@ -19,8 +19,8 @@ public:
         // Once we add a '(' we will then discard it and try a ')' which can only close a valid '('. 
         // Each of these steps are recursively called.
         
-        if(open < n)            generateHelper(temp + '(', res, n, open + 1, close);
-        if(close < open)        generateHelper(temp + ')', res, n, open, close + 1);
+        if(noOpenB < n)               generateHelper(temp + '(', res, n, noOpenB + 1, noCloseB);
+        if(noCloseB < noOpenB)        generateHelper(temp + ')', res, n, noOpenB, noCloseB + 1);
         
         return;
     }
@@ -30,9 +30,9 @@ public:
         vector<string> res;
         
         string temp = "";
-        int open = 0, close = 0;
+        int noOpenB = 0, noCloseB = 0;
         
-        generateHelper(temp, res, n, open, close);
+        generateHelper(temp, res, n, noOpenB, noCloseB);
         
         return res;
     }
