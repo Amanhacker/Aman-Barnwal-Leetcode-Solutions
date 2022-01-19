@@ -17,9 +17,11 @@ public:
             
             int newBuyProfit = 0, newSellProfit = 0;
             
+            // When you buy the ith share on oldSellProfit
             if(oldSellProfit - a[i] > oldBuyProfit)             newBuyProfit = oldSellProfit - a[i];
             else                                                newBuyProfit = oldBuyProfit;
             
+            // When you sell ith share on oldBuyProfit
             if(oldBuyProfit + a[i] - fee > oldSellProfit)       newSellProfit = oldBuyProfit + a[i] - fee;
             else                                                newSellProfit = oldSellProfit;
             
