@@ -19,20 +19,14 @@ public:
             while(j + 1 < n && a[j] == a[j + 1]) {
                 
                 sum += neededTime[j + 1];
-                
-                if(maxi < neededTime[j + 1]) {
-                    maxi = max(maxi, neededTime[j + 1]);
-                }
+                maxi = max(maxi, neededTime[j + 1]);
                 
                 flag = false;
                 j++;
             }
             
             if(flag == false) {
-                
                 time += sum - maxi;
-                cout << sum << " " << maxi << " " << time << " ";
-
                 i = j + 1;
             }
             
