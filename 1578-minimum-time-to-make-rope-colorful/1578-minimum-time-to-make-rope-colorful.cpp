@@ -5,35 +5,22 @@ public:
     
         int time = 0;
         int n = a.size();
+
+        time = neededTime[0];
+        int maxCost = neededTime[0];
         
-        for(int i=0; i<n; ) {
+        for(int i=1; i<n; i++) {
             
-            // Find whether the same colors are consecutive
-            
-            int sum = neededTime[i];
-            int maxi = neededTime[i];
-        
-            bool flag = true;
-            int j = i;
-            
-            while(j + 1 < n && a[j] == a[j + 1]) {
-                
-                sum += neededTime[j + 1];
-                maxi = max(maxi, neededTime[j + 1]);
-                
-                flag = false;
-                j++;
+            if(a[i] != a[i-1]) {
+                time -= maxCost;
+                maxCost = 0;
             }
             
-            if(flag == false) {
-                time += sum - maxi;
-                i = j + 1;
-            }
-            
-            else                    i++;
+            time += neededTime[i];
+            maxCost = max(maxCost, neededTime[i]);
         }
         
-        return time;
+        return time - maxCost;
     }
     
 };
