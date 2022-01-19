@@ -5,6 +5,9 @@ public:
     
         int n = a.size();
         
+        // buyProfit is the state when you have extra shares i.e more buys than sells
+        // sellProfit is the state when you don't have extra shares i.e no.of Buys = no.of Sells
+        
         int oldBuyProfit = -a[0];
         int oldSellProfit = 0;                // Buy here first stock initially
         
