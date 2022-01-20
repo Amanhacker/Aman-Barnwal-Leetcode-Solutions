@@ -5,8 +5,6 @@ public:
     
         int len = part.length();
         
-        // if(s.length() < part.length())                             return s;
-        
         while(true) {
             
             auto ind = s.find(part);
