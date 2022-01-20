@@ -5,7 +5,7 @@ public:
     
         int len = part.length();
         
-        if(s.length() < part.length())                             return s;
+        // if(s.length() < part.length())                             return s;
         
         while(true) {
             
