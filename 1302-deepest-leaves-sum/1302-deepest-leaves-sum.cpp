@@ -11,29 +11,33 @@
  */
 class Solution {
 public:
-    
-    int height(TreeNode* root) {
+   
+    void bfs(TreeNode* root, int &sum) {
         
-        if(root == NULL)                            return 0;
+        if(root == NULL)                             return;
         
-        int l = height(root->left);
-        int r = height(root->right);
+        queue<TreeNode*> q;
+        q.push(root);
         
-        return 1 + max(l, r);
-    }
-    
-    void findLastLevel(TreeNode* root, int lev, int &sum) {
-        
-        if(root == NULL)                            return;
-        
-        if(lev == 1) {
-            sum += root->val;
+        while(q.empty() == false) {
+
+            int n = q.size();
+            int t = 0;
+            
+            for(int i=0; i<n; i++) {
+                
+                TreeNode* temp = q.front();
+                q.pop();
+                
+                t += temp->val;
+                
+                if(temp->left != NULL)              q.push(temp->left);
+                if(temp->right != NULL)             q.push(temp->right);
+            }
+            
+            sum = t;
         }
-        else if(lev > 1) {
-            if(root->left != NULL)                  findLastLevel(root->left, lev - 1, sum);
-            if(root->right != NULL)                 findLastLevel(root->right, lev - 1, sum);
-        }
-        
+
         return;
     }
     
@@ -41,11 +45,10 @@ public:
     
         if(root == NULL)                                            return 0;
         
-        // Using level order traversal
-        int h = height(root);
+        // Using level order traversal using Queue
         
         int sum = 0;
-        findLastLevel(root, h, sum);
+        bfs(root, sum);
         
         return sum;
     }
