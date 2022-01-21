@@ -1,9 +1,11 @@
 class Solution {
 public:
     
-    // Find all happy strings in lexicgraphical order
+    // Find all happy strings of length n in lexicgraphical order
     
-    void findAllStrings(int n, string temp, vector<string> &ans) {
+    void findAllStrings(int n,int k, string temp, vector<string> &ans) {
+        
+        if(ans.size() == k)                                     return;
         
         // Base Condition
         if(temp.size() == n) {
@@ -19,7 +21,7 @@ public:
             if(temp.length() == 0 || temp[temp.size() - 1] != ch) {
                 
                 temp += ch;
-                findAllStrings(n, temp, ans);
+                findAllStrings(n, k, temp, ans);
                 temp.pop_back();
             }
         }
@@ -35,14 +37,16 @@ public:
         // Recursively all the substrings of length n, and then return (k-1)th string
         
         string temp = "";
-        findAllStrings(n, temp, ans);
+        findAllStrings(n, k, temp, ans);
        
         if(k > ans.size())                              return res;
         
-        sort(ans.begin(), ans.end());
-        res = ans[k-1];
+        return ans[ans.size() - 1];
         
-        return res;
+//         sort(ans.begin(), ans.end());
+//         res = ans[k-1];
+        
+//         return res;
     }
     
 };
