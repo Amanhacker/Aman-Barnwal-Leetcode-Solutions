@@ -41,12 +41,7 @@ public:
        
         if(k > ans.size())                              return res;
         
-        return ans[ans.size() - 1];
-        
-//         sort(ans.begin(), ans.end());
-//         res = ans[k-1];
-        
-//         return res;
+        return ans[k-1];
     }
     
 };
