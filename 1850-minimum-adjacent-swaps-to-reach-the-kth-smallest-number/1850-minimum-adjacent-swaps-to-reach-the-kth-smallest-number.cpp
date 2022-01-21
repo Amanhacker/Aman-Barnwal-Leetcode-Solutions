@@ -39,7 +39,6 @@ public:
         }
 
         string temp = s;
-        cout << temp << endl;
         
         while(true) {
             
@@ -50,13 +49,13 @@ public:
                 // Find the index of ch in string str
                 // No.of adjacent swaps taken to put ch at index i in temp from original string str = abs(it - i)
                 
-                int ind = -1;
+                int ind = i;
                 
-                for(ind=i; ind>=0; ind--) {
+                for( ; ind>=0; ind--) {
                     if(str[ind] == ch)                                  break;
                 }
                 
-                if(ind != -1 && ind != i) {
+                if(ind != i) {
                     
                     for(int j=ind; j<i; j++) {
                         
