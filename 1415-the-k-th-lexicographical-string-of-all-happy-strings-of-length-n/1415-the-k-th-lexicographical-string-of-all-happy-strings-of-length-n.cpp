@@ -11,8 +11,6 @@ public:
         if(temp.size() == n) {
             
             ans.push_back(temp);
-            temp = "";
-            
             return;
         }
 
