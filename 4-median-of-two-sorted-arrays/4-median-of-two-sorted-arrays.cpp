@@ -3,7 +3,7 @@ public:
     
     double findMedianSortedArrays(vector<int>& a1, vector<int>& a2) {
     
-        double res;
+       double res;
         vector<int> v;
         
         // Merge two sorted vectors a1 and a2 into a sorted vector v
