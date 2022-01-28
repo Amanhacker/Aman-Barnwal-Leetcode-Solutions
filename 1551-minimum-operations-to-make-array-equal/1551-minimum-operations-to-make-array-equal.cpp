@@ -8,16 +8,7 @@ public:
         
         // if n is even or odd, we have to make all elements equal to n
         
-        int res = 0;
-        vector<int> v(n);
-        
-        for(int i=0; i<n; i++)                                  v[i] = (2 * i + 1);
-        
-        for(int i=0, j=n-1; i < j; i++, j--) {
-            res += (v[j] - v[i]) / 2;
-        }
-        
-        return res;
+        return (n * n) / 4;
     }
     
 };
