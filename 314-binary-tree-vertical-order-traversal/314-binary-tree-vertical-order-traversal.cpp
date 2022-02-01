@@ -11,43 +11,45 @@
  */
 class Solution {
 public:
-    
-    map<int, map<int, vector<int>>> mp;
 
-    // DFS Traversal
-    void dfs(TreeNode* root, int row, int col) {
+    map<int, vector<int>> mp;
+
+    // BFS Traversal using Queue
+    
+    void bfs(TreeNode* root) {
         
-        if(root == NULL)                                               return;
+        if(root == NULL)                                              return;
         
-        mp[col][row].push_back(root->val);
+        queue<pair<TreeNode*, int>> q;              // 1st arg - Node, 2nd arg - Column no
+        q.push({root, 0});
         
-        dfs(root->left, row + 1, col - 1);
-        dfs(root->right, row + 1, col + 1);
+        while(q.empty() == false) {
+            
+            pair<TreeNode*, int> temp = q.front();
+            q.pop();
+            
+            TreeNode* tempNode = temp.first;
+            int colNo = temp.second;
+            
+            mp[colNo].push_back(tempNode->val);
+            
+            if(tempNode->left != NULL)                                 q.push({tempNode->left,  colNo - 1});
+            if(tempNode->right != NULL)                                q.push({tempNode->right, colNo + 1});
+        }
         
         return;
     }
     
     vector<vector<int>> verticalOrder(TreeNode* root) {
-    
+        
         vector<vector<int>> res;
         
         if(root == NULL)                                                return res;
         
         // Find Vertical Order Traversal of the given BT
-        dfs(root, 0, 0);
+        bfs(root);
         
-        for(auto &x : mp) {
-            
-            map<int, vector<int>> u = x.second;
-            vector<int> temp;
-            
-            for(auto &x1 : u) {
-                for(auto &x2 : x1.second)                              temp.push_back(x2);
-            }
-            
-            res.push_back(temp);
-            temp.clear();
-        }
+        for(auto &x : mp)                                               res.push_back(x.second);            
         
         return res;
     }
