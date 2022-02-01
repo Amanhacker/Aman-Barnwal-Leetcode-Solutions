@@ -18,12 +18,10 @@ public:
                 
                 while(i < abbr.length() && isdigit(abbr[i])) {
                     sum = (sum * 10) + (int)(abbr[i] - '0');   
-                    // cout << abbr[i] << " ";
                     i++;
                 }
                 
                 // Sum is the no.of characters
-                // cout << sum << " ";
                 j += sum;
                 
                 if(j > word.length())                                       return false;
@@ -37,11 +35,11 @@ public:
                 i++;
                 j++;
             }
-            
-            cout << i << " " << j << endl;
         }
         
+        // If either of word or abbr is smaller in length
         if(i < abbr.length() || j < word.length())                          return false;
+        
         return true;
         
     }
