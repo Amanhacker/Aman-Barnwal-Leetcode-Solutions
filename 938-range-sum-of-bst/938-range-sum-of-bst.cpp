@@ -14,23 +14,15 @@ public:
     
     void inorder(TreeNode* root, int low, int high, int &sum) {
   
-      if(root == NULL)                return;
+      if(root == NULL)                                   return;
 
       // inorder means left -> root -> right
 
-      if(root->val > low) {
-        inorder(root->left, low, high, sum);  
-      }
+      if(root->val > low)                                inorder(root->left, low, high, sum);  
 
-      // Then we have to skip left children of root node
-       if(root->val >= low && root->val <= high) {  
-        sum += root->val;
-      }
+      if(root->val >= low && root->val <= high)          sum += root->val;
 
-      if(root->val > high) {
-        // Here, we still need to go to left children
-        return;
-      }  
+      if(root->val > high)                               return;
 
       inorder(root->right, low, high, sum);
 
@@ -42,7 +34,6 @@ public:
         if(root == NULL)                                            return 0;
         
         int sum = 0;
-        
         inorder(root, low, high, sum);
 
         return sum;
