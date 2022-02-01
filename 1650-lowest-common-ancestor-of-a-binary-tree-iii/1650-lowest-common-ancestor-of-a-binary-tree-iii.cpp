@@ -21,11 +21,16 @@ public:
         
         while(p1 != q1) {
             
-            if(p1 == NULL)                         p1 = q;
-            else                                   p1 = p1->parent;
+//             if(p1 != NULL)                          cout << "p1: " << p1->val << endl;
+//             if(q1 != NULL)                          cout << "q1: " << q1->val << endl;
             
-            if(q1 == NULL)                         q1 = p;
-            else                                   q1 = q1->parent;
+//             cout << "---" << endl;
+            
+            if(p1 == NULL)                            p1 = q;
+            else                                      p1 = p1->parent;
+            
+            if(q1 == NULL)                            q1 = p;
+            else                                      q1 = q1->parent;
         }        
 
         return p1;
