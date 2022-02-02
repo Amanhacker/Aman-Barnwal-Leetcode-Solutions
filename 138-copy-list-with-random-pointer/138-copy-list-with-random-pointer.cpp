@@ -24,7 +24,7 @@ public:
         
         if(head == NULL)                                    return NULL;
         
-        for(l1=head; l1!=NULL; ) {
+        for(l1 = head; l1 != NULL; ) {
             
             l2 = new Node(l1->val);
             
@@ -36,14 +36,14 @@ public:
         
         newHead = head->next;
         
-        for(l1=head; l1!=NULL; ) {
+        for(l1 = head; l1 != NULL; ) {
             
             if(l1->random != NULL)                          l1->next->random = l1->random->next;
             
             l1 = l1->next->next;
         }
         
-        for(l1=head; l1!=NULL; ) {
+        for(l1 = head; l1 != NULL; ) {
             
             l2 = l1->next;
             l1->next = l2->next;
