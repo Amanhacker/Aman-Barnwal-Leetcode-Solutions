@@ -20,7 +20,7 @@ public:
         
         if(root == NULL)                               return NULL;
         
-        if(u.count(root))                         return u[root];
+        if(u.count(root))                              return u[root];
         
         NodeCopy* newRoot = new NodeCopy(root->val);
         u[root] = newRoot;
