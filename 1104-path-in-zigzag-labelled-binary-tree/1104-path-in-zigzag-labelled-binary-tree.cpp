@@ -22,27 +22,34 @@ public:
                //    start = llv
                //    So, x = 3 * llv - 1 - n
         
-        int llv = 1;
-        int curVal = 0;
+        int llv = 1;                    // Start node value at each level
+        int curVal = 0;                 // Last node value at cur level
         
         int n = label;
         
         while(curVal < n) {
-            curVal += llv;
-            llv *= 2;
+            curVal += llv;    // Last node value is no.of nodes at present lev added to last node value at prev lev
+            llv *= 2;         // No.of nodes at a level is doubled than that of no.of nodes at prev level
         }
         
+        // We have to divide by 2, because it adds extra no.of nodes at one level
         llv /= 2;
         
+        
+        // Now, llv becomes start value node at last level of BT
+        
+        // We start with the last level
         while(n != 1) {
             
             res.push_back(n);
             
             // Find the node which needs to be swapped with this n
             int complementNode = (3 * llv) - 1 - n;
+            
+            // Update node at each step, because we are moving one level upwards in each step
             n = complementNode / 2;
             
-            llv /= 2;
+            llv /= 2;                       // We are moving one level upwards in each step
         }
         
         res.push_back(1);
