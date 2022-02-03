@@ -15,17 +15,15 @@ public:
     
         if(head == NULL)                            return;
         
-        ImmutableListNode* temp = head;
-        
-        if(temp->getNext() == NULL) {
-            // i.e temp is the last node
-            temp->printValue();
+        if(head->getNext() == NULL) {
+            // i.e head is the last node
+            head->printValue();
             return;
         }
         
-        printLinkedListInReverse(temp->getNext());
+        printLinkedListInReverse(head->getNext());
 
-        temp->printValue();
+        head->printValue();
         
         return;
     }
