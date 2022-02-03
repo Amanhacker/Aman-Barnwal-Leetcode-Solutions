@@ -23,6 +23,9 @@ public:
             // If set has index, where word didn't break
             if(word.count(temp)) {
                 
+                 // Creating the partition at (i + 1)
+                
+                 // Get Recurrence for rest of the string
                  sub = helperWordBreak(s, i + 1, n, word, u);
             
                  for(auto x : sub) {
