@@ -23,9 +23,9 @@ public:
             return;
         }
         
-        printLinkedListInReverse(head->getNext());
+        printLinkedListInReverse(temp->getNext());
 
-        head->printValue();
+        temp->printValue();
         
         return;
     }
