@@ -20,7 +20,7 @@ public:
         
         if(root == NULL)                               return NULL;
         
-        if(u.count(root) == 1)                         return u[root];
+        if(u.count(root))                         return u[root];
         
         NodeCopy* newRoot = new NodeCopy(root->val);
         u[root] = newRoot;
@@ -38,7 +38,7 @@ public:
         
         if(root == NULL)                                return newRoot;
         
-        unordered_map<Node*, NodeCopy*> u;
+        unordered_map<Node*, NodeCopy*> u;              // 1st arg - Original Node, 2nd arg - Cloned Node
         
         newRoot = helpCopyRandom(root, u);
         return newRoot;
