@@ -4,6 +4,7 @@ public:
     string longestPalindrome(string s) {
     
         string res = "";
+        
         int maxLen = 0;
         int n = s.length();
         
