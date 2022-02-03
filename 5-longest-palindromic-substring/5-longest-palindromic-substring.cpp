@@ -5,7 +5,7 @@ public:
     
         string res = "";
         
-        int maxLen = 0;
+        int maxLen = 1;
         int n = s.length();
         
         vector<vector<int>> dp;
@@ -27,10 +27,11 @@ public:
                        
                         // If substring from [i+1, j-1] is a palindrome and if s[i] == s[j], then substring from [i, j] is also a palindrome
                         dp[i][j] = 1;                  
-                        
-                        if(maxLen < j-i+1) {
-                            maxLen = j-i+1;
-                            res = s.substr(i, j-i+1);
+                        int len = j - i + 1;
+
+                        if(maxLen < len) {
+                            maxLen = len;
+                            res = s.substr(i, len);
                         }
                     }
                 }
