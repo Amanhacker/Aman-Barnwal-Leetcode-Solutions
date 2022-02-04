@@ -17,8 +17,12 @@ public:
         TreeNode* root = new TreeNode(pre[preIndex]);
         preIndex++;
         
-        if(root->val != post[postIndex])         root->left =  constructHelper(pre, post, preIndex, postIndex);
-        if(root->val != post[postIndex])         root->right = constructHelper(pre, post, preIndex, postIndex);
+        // Because root node will be lastly iterated in post order,
+        // if (root.val == post[posIndex]), it means we have constructed the whole tree,
+        
+        if(root->val != post[postIndex])        root->left =  constructHelper(pre, post, preIndex, postIndex);
+        if(root->val != post[postIndex])        root->right = constructHelper(pre, post, preIndex, postIndex);
+           
         
         postIndex++;
         return root;
