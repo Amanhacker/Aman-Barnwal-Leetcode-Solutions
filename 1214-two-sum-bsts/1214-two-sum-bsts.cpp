@@ -36,9 +36,13 @@ public:
         inorder(root1, res1);
         inorder(root2, res2);
         
-        for(auto &x : res1) {
-            // Check whether (target - x) present in res2
-            if(find(res2.begin(), res2.end(), target - x) != res2.end())        return true;
+        int i = 0, j = res2.size() - 1;
+        
+        while(i < res1.size() && j >= 0) {
+            
+            if(res1[i] + res2[j] == target)                            return true;
+            else if(res1[i] + res2[j] > target)                        j--;
+            else if(res1[i] + res2[j] < target)                        i++;
         }
         
         return false;
