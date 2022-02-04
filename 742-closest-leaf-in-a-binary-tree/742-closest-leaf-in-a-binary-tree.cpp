@@ -13,7 +13,7 @@ class Solution {
 public:
     
     unordered_map<int, vector<int>> adj;
-    vector<int> vis, dist;
+    vector<int> vis, dist;                  // Dist[i] is distance from node k to node i
     
     vector<int> v;
     int maxNode = -1;
@@ -74,8 +74,6 @@ public:
             int temp = q.front();
             q.pop();
 
-            cout << temp << " ";
-            
             for(int i=0; i<adj[temp].size(); i++) {
                 
                 int child = adj[temp][i];
@@ -89,11 +87,6 @@ public:
                 }
             }
         }
-        
-        cout << endl;
-        
-        for(int i=1; i<=n; i++)                         cout << dist[i] << " ";
-        cout << endl;
         
         return;
     }
@@ -110,17 +103,12 @@ public:
         
         // Form the graph
         outdegree.resize(1001);
-        cout << "Aman before Inorder" << endl;
         inorder(root);
-        cout << "Aman After Inorder" << endl;
         
-        // n is the no.of nodes from [1, n]
-        
+        // n is the no.of nodes from [1, maxNode]
         int e = n - 1;
         
         // A node is a leaf node if it has zero outdegree
-        cout << n << " NoNodes" << endl;
-        cout << v.size() << endl;
         
         vis.resize(1001, 0);
         dist.resize(1001, 0);
@@ -128,12 +116,11 @@ public:
         // Run bfs from node having value k to all nodes
         bfs(k);
         
+        // for(int i=1; i<=maxNode; i++)                         cout << dist[i] << " ";
+        // cout << endl;
         
-        for(int i=1; i<=maxNode; i++)                         cout << dist[i] << " ";
-        cout << endl;
-        
-        for(int i=1; i<=maxNode; i++)                         cout << outdegree[i] << " ";
-        cout << endl;
+        // for(int i=1; i<=maxNode; i++)                         cout << outdegree[i] << " ";
+        // cout << endl;
         
         for(int i=1; i<=maxNode; i++) {
             
