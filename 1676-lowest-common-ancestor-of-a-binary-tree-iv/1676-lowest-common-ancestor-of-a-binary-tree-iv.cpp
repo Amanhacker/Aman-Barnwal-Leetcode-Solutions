@@ -12,16 +12,21 @@
 class Solution {
 public:
   
-    int traverse(TreeNode* root, unordered_set<TreeNode*> &w, TreeNode* &res) {
+    int traverse(TreeNode* root, unordered_set<TreeNode*> &w, TreeNode* &res, int n) {
         
-        int match;
+        if(root == NULL)                                    return 0;
         
-        if(root == NULL)       match = 0;
-        else                   match = w.count(root) + traverse(root->left, w, res) + traverse(root->right, w, res);
+        int l = traverse(root->left, w, res, n);
+        int r = traverse(root->right, w, res, n);
         
-        if(match == w.size() && res == NULL)                    res = root;
+        if(w.count(root)) {
+            if(res == NULL && l + r + 1 == n)               res = root;
+            return l + r + 1;
+        }
         
-        return match;
+        if(res == NULL && l + r == n)                       res = root;
+        
+        return (l + r);
     }    
     
     TreeNode* lowestCommonAncestor(TreeNode* root, vector<TreeNode*> &nodes) {
@@ -29,11 +34,12 @@ public:
         TreeNode* res = NULL;
         
         // Find the LCA of all the nodes which are present in vector "nodes"
+        int n = nodes.size();
         
         unordered_set<TreeNode*> w;
         for(auto &x : nodes)                                     w.insert(x);
         
-        traverse(root, w, res);
+        traverse(root, w, res, n);
         return res;
     }
     
