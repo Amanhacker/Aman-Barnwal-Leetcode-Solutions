@@ -6,11 +6,15 @@ public:
         int sum = -1;
         int n = a.size();
         
-        for(int i=0; i<n; i++) {
-            for(int j=i+1; j<n; j++) {
+        sort(a.begin(), a.end());
+        
+        for(int i=0, j=n-1; i<j; ) {
                 
-                if(a[i] + a[j] < k)                         sum = max(sum, a[i] + a[j]);
-            }
+            if(a[i] + a[j] < k) {
+               sum = max(sum, a[i] + a[j]);
+               i++;
+            }   
+            else                                        j--;
         }
         
         return sum;
