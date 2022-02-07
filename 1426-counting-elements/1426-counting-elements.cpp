@@ -6,18 +6,10 @@ public:
         int res = 0;
         int n = a.size();
         
-        map<int, int> u;
+        unordered_set<int> w;
         
-        for(int i=0; i<n; i++)                  u[a[i]]++;
-        
-        for(auto &x : u) {
-            
-            int ele = x.first + 1;
-            int ct = count(a.begin(), a.end(), ele);
-            
-            if(ct == 0)                         continue;
-            else if(ct >= 1)                    res += x.second;
-        }
+        for(auto &x : a)                              w.insert(x);
+        for(auto &x : a)                              res += w.count(x + 1);
         
         return res;
     }
