@@ -7,7 +7,6 @@ public:
         vector<vector<int>> res;        
         
         int n = a.size();
-        
         unordered_map<int, vector<int>> u;
         
         for(auto &x : a) {
