@@ -16,14 +16,6 @@ public:
             for(int j=0; j<temp.length(); j++)                          mat[i][j] = temp[j];
         }
         
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<m; j++) {
-                cout << mat[i][j] << " ";
-            }
-            cout << endl;
-        }
-        cout << endl;
-        
         // Check whether the traverse of matrix is same as that of matrix
         vector<string> res;
         
