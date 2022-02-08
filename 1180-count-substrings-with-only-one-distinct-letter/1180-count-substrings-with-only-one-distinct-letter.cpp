@@ -12,14 +12,35 @@ public:
         
         int i = 0, j = 0;
         
-        for(int i=1, j=0; i<=n; i++) {
+        while(i < n && j < n) {
             
-            if(i == n || s[i] != s[j]) {
-                res += (i - j + 1) * (i - j) / 2;
-                j = i;
+            // Divide the substring with only one distinct character of maximum length
+            
+            while(j + 1 < n && s[j] == s[j + 1]) {
+                j++;
+            }
+            
+            // Here, j is the index of new substring
+            // So, length of substring is from [i, j]
+            
+            
+            
+            if(j < n) {
+            
+                int len = (j - i + 1);
+                
+                string temp = s.substr(i, len);
+                cout << temp << " ";
+
+                // No.of required substrings of length l = l * (l + 1) / 2;
+                res += len * (len + 1) / 2;
+
+                // Update i and j
+                i = j + 1;
+                j++;
             }
         }
-        
+         
         return res;
     }
     
