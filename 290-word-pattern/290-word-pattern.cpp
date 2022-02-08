@@ -48,12 +48,6 @@ public:
             r2.push_back(u2[v[i]]);
         }
         
-        for(auto &x : r1)                          cout << x << " ";
-        cout << endl;
-            
-        for(auto &x : r2)                          cout << x << " ";
-        cout << endl;
-        
         return (r1 == r2);
     }
     
