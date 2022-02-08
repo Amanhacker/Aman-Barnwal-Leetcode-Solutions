@@ -23,14 +23,12 @@ public:
             // Here, j is the index of new substring
             // So, length of substring is from [i, j]
             
-            
-            
             if(j < n) {
             
                 int len = (j - i + 1);
                 
-                string temp = s.substr(i, len);
-                cout << temp << " ";
+                // string temp = s.substr(i, len);
+                // cout << temp << " ";
 
                 // No.of required substrings of length l = l * (l + 1) / 2;
                 res += len * (len + 1) / 2;
