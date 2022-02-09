@@ -16,9 +16,7 @@ public:
         sort(evenInd.begin(), evenInd.end());
         sort(oddInd.begin(), oddInd.end(), greater<int>());        
         
-        int k = 0;
-        
-        for(int i=0, j=0; i < evenInd.size() || j < oddInd.size(); i++, j++, k += 2) {
+        for(int i=0, j=0; i < evenInd.size() || j < oddInd.size(); i++, j++) {
             if(i < evenInd.size())                               res.push_back(evenInd[i]);
             if(j < oddInd.size())                                res.push_back(oddInd[j]);
         }        
