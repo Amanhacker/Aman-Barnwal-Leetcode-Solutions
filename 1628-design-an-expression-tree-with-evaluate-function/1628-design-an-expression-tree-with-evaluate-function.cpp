@@ -69,25 +69,6 @@ int OpNode::evaluate() const {
     }
 }
 
-// class TreeBuilder {
-// public:
-//     Node* buildTree(vector<string>& postfix) {
-//         stack<Node*> st;
-//         for (auto s: postfix) {
-//             if(isdigit(s[0])) {
-//                 st.push(new NumNode(stoi(s)));
-//             }else{
-//                 auto r = st.top();
-//                 st.pop();
-//                 auto l = st.top();
-//                 st.pop();
-//                 st.push(new OpNode(s[0], l, r));
-//             }
-//         }
-//         return st.top();
-//     }
-// };
-
 class TreeBuilder {
 public:
     
