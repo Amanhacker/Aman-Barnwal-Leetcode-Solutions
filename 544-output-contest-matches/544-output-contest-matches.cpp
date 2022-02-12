@@ -19,7 +19,6 @@ public:
             k++;
         }
         
-        
         // First round of pair is already done
             
         while(true) {
