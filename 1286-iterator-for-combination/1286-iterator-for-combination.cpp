@@ -4,9 +4,6 @@ public:
     vector<string> v;
     int i = -1, n;
     
-    map<char, int> vis;
-    string temp = "";
-    
     void findAllCombinations(string temp, int ind, string s, int len) {
         
         // Base Condition
@@ -14,7 +11,6 @@ public:
             
             if(ind == len) {
                 v.push_back(temp);
-                cout << temp << " ";
             }
             
             return;
@@ -33,14 +29,7 @@ public:
         string temp = "";        
         findAllCombinations(temp, 0, s, l);
         
-        cout << "Aman";
-        
         sort(v.begin(), v.end());
-        
-        cout << endl;
-        for(auto &x : v)                                        cout << x << " ";
-        cout << endl;
-        
         n = v.size();
     }
     
