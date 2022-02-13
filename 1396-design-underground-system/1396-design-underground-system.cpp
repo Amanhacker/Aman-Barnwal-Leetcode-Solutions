@@ -1,7 +1,6 @@
 class UndergroundSystem {
 public:
     
-    // Checkin ID means +ve, Checkout id means -ve
     // Time taken = (checkout - checkin) / no of stations
     
     unordered_map<int, pair<string, int>> checkins;             // 1st arg -  id, 2nd arg - stationName, 3rd arg - time
