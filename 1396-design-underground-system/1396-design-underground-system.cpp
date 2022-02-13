@@ -4,7 +4,7 @@ public:
     // Time taken = (checkout - checkin) / no of stations
     
     unordered_map<int, pair<string, int>> checkins;             // 1st arg -  id, 2nd arg - stationName, 3rd arg - time
-    unordered_map<string, pair<int, int>> routes;               // 1st arg - stationName, 2nd arg- time, 3rd arg - id
+    unordered_map<string, pair<int, int>> routes;               // 1st arg - (startStation, endStation), 2nd arg- frequency, 3rd arg - Time Difference
     
     UndergroundSystem() {
         
@@ -25,7 +25,6 @@ public:
         
         routes[route].first++;
         routes[route].second += (t- start);
-        
         
         return;
     }
