@@ -3,17 +3,24 @@ public:
    
     int reachNumber(int target) {
     
-        target = abs(target);
-        int i = 0;                                  // ith move
+        if(target == 0)                                             return 0;
         
-        while(target > 0) {
-            
-            i++;
-            target -= i; 
+        target = abs(target);
+        int steps = 0, sum = 0;
+        
+        
+        while(sum < target) {
+            sum += steps;
+            steps++; 
         }
-       
-        if(target % 2 == 0)                                     return i;
-        else                                                    return (i + 1) + (i % 2);
+        
+        // Reach till the point when (sum - target) % 2 == 0
+        while( (sum - target) % 2 == 1 ) {
+            sum += steps;
+            steps++;
+        }
+        
+        return (steps - 1);
     }
     
 };
