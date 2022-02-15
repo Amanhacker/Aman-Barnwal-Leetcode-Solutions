@@ -30,11 +30,9 @@ public:
         
         if(i == v.size())                                   return (count >= n);
         
-        cout << i << endl;
-        
         for( ; i<v.size(); i++) {
             
-            if(v[i] == 1)                                  continue;
+            if(v[i] == 1)                                   continue;
             
             if(v[i] == 0) {
                 
@@ -51,12 +49,8 @@ public:
                 if(i == v.size()) {
                     
                     count += noZeroes / 2;
-                    cout << count << " ";
-                    
                     return (count >= n);
                 }   
-                
-                cout << noZeroes << endl;
                 
                 if(noZeroes % 2 == 1)                       count += (noZeroes / 2);
                 else                                        count += (noZeroes - 1) / 2;
@@ -65,7 +59,6 @@ public:
             }
         }
         
-        cout << count << " ";
         return (count >= n);
     }
     
