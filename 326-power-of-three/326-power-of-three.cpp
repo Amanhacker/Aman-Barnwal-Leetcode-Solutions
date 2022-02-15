@@ -12,7 +12,6 @@ public:
                 n = n / 3;
             }
             
-            cout << n << " ";
             return (n == 1);
         }
         
