@@ -10,13 +10,13 @@ public:
         
         int j = n - 1;
 
-        while(j >= 0 && nums[j] == val)                                              j--;
+        while(j >= 0 && nums[j] == val)                                   j--;
 
         if(j < 0)                                                         return 0;
         
         for(int i=0; i<=j; i++) {
             
-            while(j >= 0 && nums[j] == val)                                          j--;
+            while(j >= 0 && nums[j] == val)                                j--;
             
             if(i > j)                                                      break;
             
@@ -26,11 +26,9 @@ public:
             }
         }
         
-        cout << j << " ";
         
-        while(j >= 0 && nums[j] == val)                                              j--;
+        while(j >= 0 && nums[j] == val)                                    j--;
 
-        
         // [0, j]
         res = j + 1;
         
