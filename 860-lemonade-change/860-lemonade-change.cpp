@@ -4,12 +4,9 @@ public:
     bool lemonadeChange(vector<int>& bills) {
     
         int n = bills.size();
-        // sort(bills.begin(), bills.end());
-
         map<int, int> mp;
         
         for(auto &x : bills) {
-            
             
             // He needs to give (x - 5) change to the customer
             int change = (x - 5);
@@ -43,16 +40,12 @@ public:
                         change -= 5 * (change / 5);
                     }   
 
-                    if(change > 0)                              return false;
+                    if(change > 0)                                  return false;
                 }                                            
             }
             
             mp[x]++;
-            
-            // cout << x << " ";
-            cout << mp[5] << " " << mp[10] << " " << mp[20] << endl;
         }
-        
         
         return true;
     }
