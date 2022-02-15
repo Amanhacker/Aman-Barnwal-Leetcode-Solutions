@@ -15,7 +15,6 @@ public:
         
         while(ss >> word) {
             v.push_back(word);
-            cout << word << " ";
         }
         
         int n = v.size();
