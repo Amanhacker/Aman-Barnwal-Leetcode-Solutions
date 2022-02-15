@@ -12,8 +12,6 @@ public:
                 n = n / 2;
             }
             
-            cout << n << " ";
-            
             return (n <= 2);
         }
         
