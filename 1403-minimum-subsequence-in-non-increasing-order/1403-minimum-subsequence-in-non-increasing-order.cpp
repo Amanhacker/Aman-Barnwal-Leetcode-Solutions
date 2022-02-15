@@ -9,7 +9,6 @@ public:
         // if size of two resultant subsequence is same, then return the subsequence with max total sum
         
         int n = nums.size();
-        
         if(n <= 1)                                          return nums;
         
         sort(nums.begin(), nums.end());
@@ -17,18 +16,11 @@ public:
         vector<int> preSum(n);
         int temp = 0;
         
-        for(auto &x : nums)                                 cout << x << " ";
-        cout << endl;
-        
         for(int i=0; i<n; i++) {
             
             temp += nums[i];
             preSum[i] = temp;
-            
-            cout << temp << " ";
         }
-        
-        cout << endl;
         
         for(int j=n-1; j>=0; j--) {
             
@@ -43,8 +35,6 @@ public:
             else if(j == 0)                                 sum2 = preSum[n-1];
             else                                            sum2 = preSum[n-1] - preSum[j-1];
             
-            cout << sum1 << " " << sum2 << endl;
-            
             if(sum2 > sum1) {
                 
                 // Put all elements in res
@@ -53,7 +43,6 @@ public:
                 
             }
         }
-        
         
         sort(res.begin(), res.end(), greater<int>());
         return res;
