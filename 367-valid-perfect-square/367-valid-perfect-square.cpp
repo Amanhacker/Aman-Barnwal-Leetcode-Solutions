@@ -5,7 +5,7 @@ public:
     
         long n = num;
         
-        while(n *n > num) {
+        while(n * n > num) {
             n = (n + num / n) / 2;
         }
         
