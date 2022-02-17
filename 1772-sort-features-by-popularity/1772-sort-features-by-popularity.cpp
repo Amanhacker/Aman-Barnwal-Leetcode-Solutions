@@ -1,15 +1,10 @@
 class Solution {
 public:
     
-    unordered_map<string, int> popularity;                   // 1st arg - string, 2nd arg - Frequency of that feature
-    
-    // static bool cmp(const string &a, const string &b) {
-    //     return popularity[a] > popularity[b];
-    // }
-
-    vector<string> sortFeatures(vector<string>& features, vector<string>& responses) {
+   vector<string> sortFeatures(vector<string>& features, vector<string>& responses) {
     
         vector<string> res;
+        unordered_map<string, int> popularity;                   // 1st arg - string, 2nd arg - Frequency of that feature
         
         for(auto &x : features)                                 popularity[x] = 0;
         
@@ -27,8 +22,6 @@ public:
             
             uniqFeat.clear();
         }
-        
-        // sort(features.begin(), features.end(), cmp);
         
         stable_sort(features.begin(), features.end(), [&] (const string &a, const string &b) {
                          return popularity[a] > popularity[b];
