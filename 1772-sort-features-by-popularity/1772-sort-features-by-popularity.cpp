@@ -16,7 +16,6 @@ public:
             string word;
             
             while(ss >> word) {
-                
                 if(uniqFeat.insert(word).second)                popularity[word]++;
             }
             
