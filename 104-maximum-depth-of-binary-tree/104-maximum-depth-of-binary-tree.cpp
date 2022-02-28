@@ -12,21 +12,35 @@
 class Solution {
 public:
 
-    int height(TreeNode* root) {
+    int maxi = INT_MIN;
+    
+    void dfs(TreeNode* root, vector<int> path) {
         
-        if(root == NULL)                    return 0;
+        if(root == NULL)                            return;
         
-        int l = height(root->left);
-        int r = height(root->right);
+        path.push_back(root->val);
         
-        return 1 + max(l, r);
+        // Base Condition
+        if(root->left == NULL && root->right == NULL) {
+            
+            maxi = max(maxi, (int)(path.size()));
+            path.clear();
+        }
+        
+        dfs(root->left, path);
+        dfs(root->right, path);
+        
+        return;
     }
     
     int maxDepth(TreeNode* root) {
     
         if(root == NULL)                    return 0;
         
-        return height(root);
+        vector<int> path;
+        dfs(root, path);
+        
+        return maxi;
     }
     
 };
