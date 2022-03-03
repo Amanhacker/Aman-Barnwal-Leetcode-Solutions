@@ -11,46 +11,46 @@
  */
 class Solution {
 public:
-   
-    void bfs(TreeNode* root, int &sum) {
+
+    void bfs(TreeNode* root, int &res) {
         
-        if(root == NULL)                             return;
+        if(root == NULL)                                    return;
         
         queue<TreeNode*> q;
         q.push(root);
         
         while(q.empty() == false) {
-
+            
             int n = q.size();
-            int t = 0;
+            int sum = 0;
             
             for(int i=0; i<n; i++) {
                 
                 TreeNode* temp = q.front();
                 q.pop();
                 
-                t += temp->val;
+                if(temp->left == NULL && temp->right == NULL) {
+                    sum += temp->val;
+                }
                 
-                if(temp->left != NULL)              q.push(temp->left);
-                if(temp->right != NULL)             q.push(temp->right);
+                if(temp->left != NULL)                      q.push(temp->left);
+                if(temp->right != NULL)                     q.push(temp->right);
             }
             
-            sum = t;
+            res = sum;
         }
-
+        
         return;
     }
     
     int deepestLeavesSum(TreeNode* root) {
     
-        if(root == NULL)                                            return 0;
+        int res = 0;
         
-        // Using level order traversal using Queue
+        if(root == NULL)                                    return res;
         
-        int sum = 0;
-        bfs(root, sum);
-        
-        return sum;
+        bfs(root, res);
+        return res;
     }
     
 };
