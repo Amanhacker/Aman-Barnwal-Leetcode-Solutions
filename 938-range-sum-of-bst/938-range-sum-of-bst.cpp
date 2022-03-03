@@ -12,30 +12,32 @@
 class Solution {
 public:
     
-    void inorder(TreeNode* root, int low, int high, int &sum) {
-  
-      if(root == NULL)                                   return;
-
-      // inorder means left -> root -> right
-
-      if(root->val > low)                                inorder(root->left, low, high, sum);  
-
-      if(root->val >= low && root->val <= high)          sum += root->val;
-
-      if(root->val > high)                               return;
-
-      inorder(root->right, low, high, sum);
-
-      return;
+    void dfs(TreeNode* root, vector<int> &v) {
+        
+        if(root == NULL)                                return;
+        
+        v.push_back(root->val);
+        
+        dfs(root->left, v);
+        dfs(root->right, v);
+        
+        return;
     }
     
     int rangeSumBST(TreeNode* root, int low, int high) {
     
-        if(root == NULL)                                            return 0;
-        
         int sum = 0;
-        inorder(root, low, high, sum);
-
+        if(root == NULL)                                return 0;
+        
+        vector<int> v;
+        dfs(root, v);
+        
+        sort(v.begin(), v.end());
+        
+        for(auto &x : v) {
+            if(low <= x && x <= high)                   sum += x;
+        }
+        
         return sum;
     }
     
