@@ -21,25 +21,23 @@
  */
 class Solution {
 public:
-   
-    // Using fast and slow pointers
-   
+    
     TreeNode* sortedListToBST(ListNode* head, ListNode* tail = NULL) {
     
-        if(head == tail)                                                    return NULL;
+        if(head == tail)                                return NULL;
         
-        ListNode* fast = head;
         ListNode* slow = head;
+        ListNode* fast = head;
         
         while(fast != tail && fast->next != tail) {
             slow = slow->next;
             fast = fast->next->next;
         }
         
-        // Here, slow moves to middle node every time, fast to last node
+        // Here, slow pointer leads to mid node of Linked List
         
         TreeNode* root = new TreeNode(slow->val);
-            
+        
         root->left = sortedListToBST(head, slow);
         root->right = sortedListToBST(slow->next, tail);
         
