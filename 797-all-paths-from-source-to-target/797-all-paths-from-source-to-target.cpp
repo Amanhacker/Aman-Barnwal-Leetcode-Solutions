@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    void dfs(int node, map<int, vector<int>> &adj, vector<vector<int>> &res, vector<int> path,  int n) {
+    void dfs(int node, vector<vector<int>> &adj, vector<vector<int>> &res, vector<int> path,  int n) {
         
         path.push_back(node);
         
@@ -24,22 +24,8 @@ public:
         vector<vector<int>> res;
         int n = graph.size();
         
-        map<int, vector<int>> adj;
-        
-        int i = 0;
-        
-        for(auto x : graph) {
-            for(auto &x1 : x) {
-                
-                // node i to node x1 i.e i -> x1
-                adj[i].push_back(x1);
-            }
-
-            i++;
-        }
-        
         vector<int> path;
-        dfs(0, adj, res, path, n);
+        dfs(0, graph, res, path, n);
         
         return res;
     }
