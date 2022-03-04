@@ -1,19 +1,18 @@
 class Solution {
 public:
-    
-    void dfs(int src, int dest, vector<vector<int>> &adj, vector<int> path, vector<vector<int>> &res) {
+
+    void dfs(int node, map<int, vector<int>> &adj, vector<vector<int>> &res, vector<int> path,  int n) {
         
-        path.push_back(src);
+        path.push_back(node);
         
-        // Base Condition
-        if(src == dest) {
+        if(node == n-1) {
             res.push_back(path);
             return;
         }
         
-        for(int i=0; i<adj[src].size(); i++) {
-            int child = adj[src][i];
-            dfs(child, dest, adj, path, res);
+        for(int i=0; i<adj[node].size(); i++) {
+            int child = adj[node][i];
+            dfs(child, adj, res, path, n);
         }
         
         path.pop_back();
@@ -23,11 +22,24 @@ public:
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
     
         vector<vector<int>> res;
-        vector<int> path;
-        
         int n = graph.size();
         
-        dfs(0, n - 1, graph, path, res);
+        map<int, vector<int>> adj;
+        
+        int i = 0;
+        
+        for(auto x : graph) {
+            for(auto &x1 : x) {
+                
+                // node i to node x1 i.e i -> x1
+                adj[i].push_back(x1);
+            }
+
+            i++;
+        }
+        
+        vector<int> path;
+        dfs(0, adj, res, path, n);
         
         return res;
     }
