@@ -11,7 +11,8 @@
  */
 class Solution {
 public:
-   
+    
+    // Height of a node root
     int dfs(TreeNode* root, int &maxi) {
         
         if(root == NULL)               return 0;
