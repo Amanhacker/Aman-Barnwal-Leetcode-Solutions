@@ -13,14 +13,10 @@ public:
     
         set<ListNode*> w;
         
-        ListNode* temp = head;
-        
-        while(temp != NULL) {
-           
-            if(w.find(temp) != w.end())                             return true;
-            
-            w.insert(temp);
-            temp = temp->next;
+        while(head != NULL) {
+            if(w.find(head) != w.end())                     return true;
+            w.insert(head);
+            head = head->next;
         }
         
         return false;
