@@ -1,18 +1,6 @@
 class Solution {
 public:
     
-    // Top, right, down, left
-    // (-1, 0), (0, 1), (1, 0), (0, -1)
-    
-    int dx[4] = {-1, 0, 1,  0};
-    int dy[4] = { 0, 1, 0, -1};
-    
-    bool isValid(int x, int y, int n, int m) {
-        
-        if(x >= 0 && x < n && y >= 0 && y < m)                                             return true;
-        else                                                                               return false;
-    }
-    
     vector<int> findPeakGrid(vector<vector<int>>& mat) {
     
         vector<int> res;
@@ -20,33 +8,53 @@ public:
         int n = mat.size();
         int m = mat[0].size();
         
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<m; j++) {
+        int startCol = 0, endCol = m - 1;
+        
+        while(startCol <= endCol) {
+            
+            int curCol = startCol + (endCol - startCol) / 2;
+            
+            // Find the maximum element in the column no curCol
+            
+            // maxRowIndex is the row no where the element is maximum in endCol index
+            
+            int maxRowIndex = 0;
+            
+            for(int i=0; i<n; i++) {
                 
-                int tempEle = mat[i][j];
-                int maxi = INT_MIN;
-
-                for(int k=0; k<4; k++) {
-                    
-                    int x1 = i + dx[k];
-                    int y1 = j + dy[k];
-
-                    if(isValid(x1, y1, n, m) == true) {
-                        maxi = max(maxi, mat[x1][y1]);
-                    }
+                if(mat[i][curCol] > mat[maxRowIndex][curCol]) {
+                    // Update the row index
+                    maxRowIndex = i;
                 }
+            }
+            
+            // Now, we ensured that the current column is greater than both top and bottom
+            // But, we need to now check for left and right of current element
+            
+            // If left and right element are both smaller than current Element, then return co-ordinate
+            if( (curCol == 0 || mat[maxRowIndex][curCol - 1] < mat[maxRowIndex][curCol]) && 
+                (curCol == m - 1 || mat[maxRowIndex][curCol + 1] < mat[maxRowIndex][curCol]) ) {
                 
-                if(tempEle > maxi) {
+                res.push_back(maxRowIndex);
+                res.push_back(curCol);
+                
+                return res;
+            }
+            
+            // Now, if left and right are not greater than current element
 
-                    res.push_back(i);
-                    res.push_back(j);
-
-                    return res;
-                 }
+            // if left element is greater than current element
+            else if(curCol - 1 >= 0 && mat[maxRowIndex][curCol - 1] > mat[maxRowIndex][curCol]) {
+                endCol = curCol - 1;
+            }
+            
+            // if right element is greater than current element
+            else if(curCol + 1 < m && mat[maxRowIndex][curCol + 1] > mat[maxRowIndex][curCol]) {
+                startCol = curCol + 1;
             }
         }
-        
-        return res;
+       
+        return {-1, -1};
     }
     
 };
