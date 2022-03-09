@@ -9,7 +9,7 @@ public:
     
     bool isValid(int x, int y, int n, int m) {
         
-        if(x >= 0 && x < n && y >= 0 && y < m)                           return true;
+        if(x >= 0 && x < n && y >= 0 && y < m)                                             return true;
         else                                                                               return false;
     }
     
