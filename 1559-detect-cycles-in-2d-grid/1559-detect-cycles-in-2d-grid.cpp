@@ -7,11 +7,6 @@ public:
     int dx[4] = {-1, 0, 1,  0};
     int dy[4] = { 0, 1, 0, -1};
     
-    bool isValid(int x, int y, int n, int m) {
-        if(x >= 0 && x < n && y >= 0 && y < m)                                      return true;
-        else                                                                        return false;
-    }
-    
     void dfs(int x, int y, int n, int m, int last_x, int last_y, char ch, vector<vector<char>> &grid, vector<vector<int>> &vis, bool &flag) {
 
         if(flag == true)                                                                 return;
