@@ -1,0 +1,9 @@
+# Write your MySQL query statement below
+
+SELECT Email 
+FROM (
+    SELECT Person.Email, COUNT(Email) as num
+    FROM Person
+    GROUP BY Email
+) AS statistic
+WHERE num > 1;
