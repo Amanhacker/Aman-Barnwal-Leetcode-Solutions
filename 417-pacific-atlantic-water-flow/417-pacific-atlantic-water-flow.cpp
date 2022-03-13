@@ -19,7 +19,8 @@ public:
         
         vis[x][y] = 1;
         
-        // (x, y) to (x1, y1), then water will only flow iff h[x][y] >= h[x1][y1]
+        // Originally (x, y) to (x1, y1), then water will only flow iff h[x][y] >= h[x1][y1]
+        // But we start from opposite i.e from edges, so condition reverses i.e h[x1][y1] >= h[x][y]
         
         for(int i=0; i<4; i++) {
             
