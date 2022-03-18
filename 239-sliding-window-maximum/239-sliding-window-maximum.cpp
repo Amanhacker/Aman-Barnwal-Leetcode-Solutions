@@ -9,6 +9,10 @@ public:
         int i = 0, j = 0;
         deque<int> maxi;
         
+        // Here we are using the sliding window and storing the max into the deque. 
+        
+        // As we slide the window, the first element of window may be included in our calc so to revert that and get the next max of window we are storing all the elem to our max and all elem to left of our max are of no use
+        
         // Here, pop_front means removing the 1st element, and pop_back means removing the last element of deque
         
         while(j < n) {
