@@ -25,15 +25,16 @@ public:
                 j++;
             }
             
+            // Since, we need to find all unique characters in the curr sliding window
+            
             else if(mp.size() < j - i + 1) {
                 
-                // Delete all elements from index i till the condition is met mp.size() <= k
+                // Delete all elements from index i till the condition is met mp.size() >= j - i + 1
                 
                 while(mp.size() < j - i + 1 && i < n) {
                     
                     mp[s[i]]--;
                     
-                    // Delete all the characters from start till it met the condition mp.size() <= j - i + 1
                     if(mp[s[i]] == 0) {
                         mp.erase(s[i]);
                     }
