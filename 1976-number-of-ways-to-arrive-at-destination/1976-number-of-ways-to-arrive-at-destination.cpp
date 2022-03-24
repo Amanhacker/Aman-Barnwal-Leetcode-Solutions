@@ -9,7 +9,7 @@ public:
         
         if(n == 0)                                       return count;
         
-        map<int, vector<pair<long long, int>>> adj;            // 1st arg - src, 2nd arg - weight, 3rd arg - dest
+        unordered_map<int, vector<pair<long long, int>>> adj;            // 1st arg - src, 2nd arg - weight, 3rd arg - dest
         
         for(int i=0; i<n; i++)                           adj[i].clear();
 
