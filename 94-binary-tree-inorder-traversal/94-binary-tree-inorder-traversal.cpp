@@ -14,7 +14,7 @@ public:
     
     void inorder(TreeNode* root, vector<int> &res) {
         
-        if(root == NULL)                            return;
+        if(root == NULL)                return;
         
         // inorder means left -> root -> right
         
@@ -28,6 +28,8 @@ public:
     vector<int> inorderTraversal(TreeNode* root) {
     
         vector<int> res;
+        
+        if(root == NULL)                    return res;
         
         inorder(root, res);
         
