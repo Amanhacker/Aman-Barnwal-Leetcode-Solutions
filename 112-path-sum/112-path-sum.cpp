@@ -11,34 +11,35 @@
  */
 class Solution {
 public:
-    
-    bool flag = false;
-    
-    void hasHelperPathSum(TreeNode* root, int tar, int sum) {
+
+    void findAllPathSum(TreeNode* root, int temp, int sum, bool &flag) {
         
-        if(root == NULL)                                       return;
+        if(root == NULL)                   return;
+        if(flag == true)                   return;
         
-        sum += root->val;
+        temp += root->val;
         
-        // Base Condition
-        if(root->left == NULL && root->right == NULL) {
-            if(sum == tar) {
-                flag = true;
-                return;
-            }          
+        // if found a leaf node
+        if(root->left == NULL && root->right == NULL && temp == sum) {
+            flag = true;
+            return;
         }
         
-        if(root->left != NULL)                  hasHelperPathSum(root->left, tar, sum);
-        if(root->right != NULL)                 hasHelperPathSum(root->right, tar, sum);
+        findAllPathSum(root->left, temp, sum, flag);
+        findAllPathSum(root->right, temp, sum, flag);
         
         return;
     }
     
-    bool hasPathSum(TreeNode* root, int tar) {
+    bool hasPathSum(TreeNode* root, int targetSum) {
     
-        if(root == NULL)                                        return false;
+        if(root == NULL)                    return false;
         
-        hasHelperPathSum(root, tar, 0);
+        // Find all the nodes from root to leaf node and then find the sum
+        
+        bool flag = false;
+        findAllPathSum(root, 0, targetSum, flag);
+        
         return flag;
     }
     
