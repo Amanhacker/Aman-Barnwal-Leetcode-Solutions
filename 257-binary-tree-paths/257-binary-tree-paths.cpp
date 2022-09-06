@@ -12,30 +12,25 @@
 class Solution {
 public:
 
-    void dfs(TreeNode* root, vector<int> path, vector<string> &res) {
+    void findAllPaths(TreeNode* root, string temp, vector<string> &res) {
         
-        if(root == NULL)                                return;
+        if(root == NULL)                            return;
         
-        path.push_back(root->val);
+        temp += to_string(root->val);
         
         if(root->left == NULL && root->right == NULL) {
-            
-            string temp = "";
-            int n = path.size();
-            
-            for(int i=0; i<path.size()-1; i++) {
-                temp += to_string(path[i]);  
-                temp += "->";
-            }   
-            
-            temp += to_string(path[n-1]);
             res.push_back(temp);
         }
         
-        dfs(root->left, path, res);
-        dfs(root->right, path, res);
+        else {
+            temp += "->";
+        }
         
-        path.pop_back();
+        findAllPaths(root->left, temp, res);
+        findAllPaths(root->right, temp, res);
+        
+        temp.pop_back();
+        
         return;
     }
     
@@ -43,9 +38,12 @@ public:
     
         vector<string> res;
         
-        vector<int> path;
-        dfs(root, path, res);
+        if(root == NULL)                            return res;
         
+        string temp = "";
+        
+        // Return all root to leaf paths
+        findAllPaths(root, temp, res);
         return res;
     }
     
