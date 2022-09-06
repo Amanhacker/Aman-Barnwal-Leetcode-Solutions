@@ -11,11 +11,12 @@
  */
 class Solution {
 public:
-    
+   
     void inorder(TreeNode* root, vector<int> &v) {
         
-        if(root == NULL)                                        return;
+        if(root == NULL)                        return;
         
+        // inorder means left -> root -> right
         inorder(root->left, v);
         v.push_back(root->val);
         inorder(root->right, v);
@@ -25,18 +26,18 @@ public:
     
     bool findTarget(TreeNode* root, int k) {
     
-        if(root == NULL)                                        return false;
-    
+        if(root == NULL)                                    return false;
+        if(root->left == NULL && root->right == NULL)       return false;
+        
         vector<int> v;
         inorder(root, v);
-
-        int low = 0, high = v.size() - 1;
         
-        while(low < high) {
+        for(int i=0; i<v.size()-1; i++) {
             
-            if(v[low] + v[high] == k)                           return true;
-            else if(v[low] + v[high] > k)                       high--;
-            else if(v[low] + v[high] < k)                       low++;
+            int t = v[i];
+            auto it = find(v.begin() + i + 1, v.end(), k - t);
+            
+            if(it != v.end())                   return true;
         }
         
         return false;
