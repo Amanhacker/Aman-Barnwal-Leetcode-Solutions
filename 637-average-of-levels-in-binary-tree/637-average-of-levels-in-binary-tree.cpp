@@ -14,26 +14,31 @@ public:
     
     int height(TreeNode* root) {
         
-        if(root == NULL)                                return 0;
+        int h = 0;
         
-        int l = height(root->left);
-        int r = height(root->right);
+        if(root == NULL)                            return h;
         
-        return 1 + max(l, r);
+        int left_h = height(root->left);
+        int right_h = height(root->right);
+        
+        return 1 + max(left_h, right_h);
     }
     
-    void findLevelSum(TreeNode* root, int lev, double &count, double &sum) {
+    void findLevelOrder(TreeNode* root, int lev, int h, int &count, double &sum) {
         
-        if(root == NULL)                                return;
+        if(root == NULL)                            return;
         
         if(lev == 1) {
-            sum += (root->val);
+            
+            sum += (double)(root->val);
             count++;
+            
+            return;
         }
         
         else if(lev > 1) {
-            findLevelSum(root->left, lev - 1, count, sum);
-            findLevelSum(root->right, lev - 1, count, sum);
+            findLevelOrder(root->left, lev - 1, h, count, sum);
+            findLevelOrder(root->right, lev - 1, h, count, sum);
         }
         
         return;
@@ -43,12 +48,16 @@ public:
     
         vector<double> res;
         
+        if(root == NULL)                            return res;
+        
         int h = height(root);
         
         for(int i=1; i<=h; i++) {
             
-            double count = 0, sum = 0;
-            findLevelSum(root, i, count, sum);
+            int count = 0;
+            double sum = 0;
+            
+            findLevelOrder(root, i, h, count, sum);
             
             double avg = sum / count;
             res.push_back(avg);
