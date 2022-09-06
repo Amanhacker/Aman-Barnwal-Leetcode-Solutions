@@ -12,29 +12,30 @@
 class Solution {
 public:
     
-    TreeNode* convertBST(vector<int> v, int start, int end) {
+    TreeNode* sortedArrayToBSTHelper(vector<int> &nums, int start, int end) {
         
         TreeNode* root = NULL;
         
-        if(start > end)                                                    return NULL;
+        if(start > end)                                          return root;
         
-        int mid = start + (end - start) / 2;
+        int mid = start + (end - start)/2;
         
-        root = new TreeNode(v[mid]);
+        root = new TreeNode(nums[mid]);
         
-        root->left = convertBST(v, start, mid - 1);
-        root->right = convertBST(v, mid + 1, end);
+        // Form two subtree, one from [0, mid - 1], and 2nd from [mid + 1, n - 1]
+        root->left = sortedArrayToBSTHelper(nums, start,  mid - 1);
+        root->right = sortedArrayToBSTHelper(nums, mid + 1, end);
         
         return root;
     }
     
-    TreeNode* sortedArrayToBST(vector<int>& v) {
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+    
+        if(nums.size() == 0)                               return NULL;
         
-        int n = v.size();
-        
-        if(n == 0)                                                         return NULL;
-        
-        TreeNode* ans = convertBST(v, 0, n-1);
-        return ans;
+        int n = nums.size();
+                
+        return sortedArrayToBSTHelper(nums, 0, n - 1);
     }
+    
 };
