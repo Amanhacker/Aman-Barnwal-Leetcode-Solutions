@@ -12,32 +12,30 @@
 class Solution {
 public:
     
-    void dfs(TreeNode* root, vector<int> &v) {
+    void inorder(TreeNode* root, vector<int> &v) {
         
-        if(root == NULL)                               return;
+        if(root == NULL)                            return;
         
+        // inorder means left -> root -> right
+        
+        inorder(root->left, v);
         v.push_back(root->val);
-        
-        dfs(root->left, v);
-        dfs(root->right, v);
+        inorder(root->right, v);
         
         return;
     }
     
     int minDiffInBST(TreeNode* root) {
     
-        int res = INT_MAX;
+        int mini = INT_MAX;
         
-        if(root == NULL)                                return -1;
+        if(root == NULL)                            return mini;
         
         vector<int> v;
-        dfs(root, v);
+        inorder(root, v);
         
-        sort(v.begin(), v.end());
-        
-        for(int i=1; i<v.size(); i++)                   res = min(res, v[i] - v[i-1]);
-        
-        return res;
+        for(int i=0; i<v.size()-1; i++)             mini = min(mini, v[i+1] - v[i]);
+        return mini;
     }
     
 };
