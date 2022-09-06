@@ -21,19 +21,19 @@ public:
 class Solution {
 public:
     
-    void dfs(Node* root, vector<int> &res) {
+    void postorderHelper(Node* root, vector<int> &res) {
         
         if(root == NULL)                        return;
         
+        // postorder means left -> right -> root
+        
         vector<Node*> ch = root->children;
         
-        for(auto &x : ch) {
-            Node* temp = x;
-            dfs(temp, res);
+        for(auto it : ch) {
+            postorderHelper(it, res);
         }
         
         res.push_back(root->val);
-        
         return;
     }
     
@@ -41,9 +41,9 @@ public:
     
         vector<int> res;
         
-        // Postorder means left -> right -> root
-        dfs(root, res);
+        if(root == NULL)                        return res;
         
+        postorderHelper(root, res);
         return res;
     }
     
