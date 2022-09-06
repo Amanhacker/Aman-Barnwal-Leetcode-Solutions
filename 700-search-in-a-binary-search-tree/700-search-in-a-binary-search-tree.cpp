@@ -12,11 +12,11 @@
 class Solution {
 public:
 
-    void inorder(TreeNode* root, int val, TreeNode* &res, bool &flag) {
+    bool flag = false;
+    
+    void dfs(TreeNode* root, TreeNode* &res, int val) {
         
-        if(root == NULL || flag == true)                               return;
-        
-        inorder(root->left, val, res, flag);
+        if(root == NULL || flag == true)                  return;
         
         if(root->val == val) {
             
@@ -26,7 +26,8 @@ public:
             return;
         }
         
-        inorder(root->right, val, res, flag);
+        dfs(root->left, res, val);
+        dfs(root->right, res, val);
         
         return;
     }
@@ -35,8 +36,7 @@ public:
     
         TreeNode* res = NULL;
         
-        bool flag = false;
-        inorder(root, val, res, flag);
+        dfs(root, res, val);
         
         return res;
     }
