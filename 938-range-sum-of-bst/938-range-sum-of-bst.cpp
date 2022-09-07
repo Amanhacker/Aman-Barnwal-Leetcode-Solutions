@@ -12,33 +12,29 @@
 class Solution {
 public:
     
-    void dfs(TreeNode* root, vector<int> &v) {
+    void inorder(TreeNode* root, vector<int> &v) {
         
-        if(root == NULL)                                return;
+        if(root == NULL)                            return;
         
+        inorder(root->left, v);
         v.push_back(root->val);
-        
-        dfs(root->left, v);
-        dfs(root->right, v);
+        inorder(root->right, v);
         
         return;
     }
     
     int rangeSumBST(TreeNode* root, int low, int high) {
     
-        int sum = 0;
-        if(root == NULL)                                return 0;
+        int res = 0;
         
         vector<int> v;
-        dfs(root, v);
-        
-        sort(v.begin(), v.end());
+        inorder(root, v);
         
         for(auto &x : v) {
-            if(low <= x && x <= high)                   sum += x;
+            if(low <= x && x <= high)               res += x;
         }
         
-        return sum;
+        return res;
     }
     
 };
