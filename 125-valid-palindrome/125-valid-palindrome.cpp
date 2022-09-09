@@ -14,8 +14,6 @@ public:
         string temp = res;
         reverse(res.begin(), res.end());
         
-        cout << res << " " << temp;
-        
         return (temp == res);
     }
     
