@@ -8,11 +8,10 @@ public:
         
         unordered_map<int, int> mp;
         
-        for(auto &x : nums)             mp[x]++;
-        
-        for(auto &x : mp) {
-            if(x.second > n / 2)        return x.first;
-        }
+        for(auto &x : nums) {
+            mp[x]++;
+            if(mp[x] > n / 2)               return x;
+        }   
         
         return -1;
     }
