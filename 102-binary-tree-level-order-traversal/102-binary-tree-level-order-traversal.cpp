@@ -12,47 +12,37 @@
 class Solution {
 public:
     
-    int height(TreeNode* root) {
-        
-        if(root == NULL)                    return 0;
-        
-        int l = height(root->left);
-        int r = height(root->right);
-        
-        return 1 + max(l, r);
-    }
-    
-    void findLevelNodes(TreeNode* root, int lev, int h, vector<int> &path) {
-        
-        if(root == NULL)                    return;
-        
-        if(lev == 1) {
-            path.push_back(root->val);
-            return;
-        }
-        
-        findLevelNodes(root->left, lev - 1, h, path);
-        findLevelNodes(root->right, lev - 1, h, path);
-        
-        return;
-    }
-    
     vector<vector<int>> levelOrder(TreeNode* root) {
     
         vector<vector<int>> res;
         
         if(root == NULL)                    return res;
         
-        int h = height(root);
         vector<int> path;
+        queue<TreeNode*> q;
         
-        for(int i=1; i<=h; i++) {
+        q.push(root);
+        
+        while(q.empty() == false) {
             
-            findLevelNodes(root, i, h, path);
+            int n = q.size();
+            
+            // All nodes at one level
+            for(int i=0; i<n; i++) {
+                
+                TreeNode* temp = q.front();
+                q.pop();
+                
+                path.push_back(temp->val);
+                
+                if(temp->left != NULL)           q.push(temp->left);
+                if(temp->right != NULL)          q.push(temp->right);
+            }
             
             res.push_back(path);
             path.clear();
         }
+        
         
         return res;
     }
