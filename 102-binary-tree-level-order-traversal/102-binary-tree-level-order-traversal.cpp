@@ -11,10 +11,10 @@
  */
 class Solution {
 public:
-
+    
     int height(TreeNode* root) {
         
-        if(root == NULL)                                    return 0;
+        if(root == NULL)                    return 0;
         
         int l = height(root->left);
         int r = height(root->right);
@@ -22,16 +22,17 @@ public:
         return 1 + max(l, r);
     }
     
-    void findLevelOrder(TreeNode* root, int lev, vector<int> &path) {
+    void findLevelNodes(TreeNode* root, int lev, int h, vector<int> &path) {
         
-        if(root == NULL)                                    return;
+        if(root == NULL)                    return;
         
-        if(lev == 1)                                        path.push_back(root->val);
-        else if(lev > 1) {
-            
-            findLevelOrder(root->left, lev - 1, path);
-            findLevelOrder(root->right, lev - 1, path);
+        if(lev == 1) {
+            path.push_back(root->val);
+            return;
         }
+        
+        findLevelNodes(root->left, lev - 1, h, path);
+        findLevelNodes(root->right, lev - 1, h, path);
         
         return;
     }
@@ -40,14 +41,14 @@ public:
     
         vector<vector<int>> res;
         
-        if(root == NULL)                                    return res;
+        if(root == NULL)                    return res;
         
         int h = height(root);
         vector<int> path;
         
         for(int i=1; i<=h; i++) {
             
-            findLevelOrder(root, i, path);
+            findLevelNodes(root, i, h, path);
             
             res.push_back(path);
             path.clear();
