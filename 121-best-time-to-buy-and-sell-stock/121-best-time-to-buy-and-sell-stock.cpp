@@ -3,15 +3,17 @@ public:
     
     int maxProfit(vector<int>& prices) {
     
-        int maxi = 0;
         int n = prices.size();
         
-        int mn = prices[0];                     // Minimum element from left side
+        if(n <= 1)                          return 0;
+        
+        int maxi = 0;
+        int minLeft = prices[0];            // Min prices from left side
         
         for(int i=1; i<n; i++) {
-            maxi = max(maxi, prices[i] - mn);
-            mn = min(mn, prices[i]);
-        }
+            maxi = max(maxi, prices[i] - minLeft);
+            minLeft = min(minLeft, prices[i]);
+        }        
         
         return maxi;
     }
