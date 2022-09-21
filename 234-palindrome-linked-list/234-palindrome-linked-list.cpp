@@ -13,20 +13,25 @@ public:
     
     bool isPalindrome(ListNode* head) {
     
-        if(head == NULL)                                    return false;
+        vector<int> v;
         
-        ListNode* temp = head;
-        string s = "";
+        if(head == NULL)                        return true;
         
-        while(temp != NULL) {
-            s += to_string(temp->val);
-            temp = temp->next;
+        while(head != NULL) {
+            v.push_back(head->val);
+            head = head->next;
         }
         
-        string str = s;
-        reverse(s.begin(), s.end());
+        int i = 0, j = v.size() - 1;
         
-        return (str == s);
+        while(i <= j) {
+            if(v[i] != v[j])                    return false;
+            
+            i++;
+            j--;
+        }
+        
+        return true;
     }
     
 };
