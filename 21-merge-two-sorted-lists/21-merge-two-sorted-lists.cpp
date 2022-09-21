@@ -11,19 +11,19 @@
 class Solution {
 public:
     
-    void addNodeAtBeginning(ListNode** head, int val) {
+    // Add node at beginning
+    
+    void addNodeAtBeginning(ListNode** head, int node) {
         
-        ListNode* temp = new ListNode(val);
+        ListNode* temp = new ListNode(node);
         
         if(head == NULL) {
-            temp = *head;
+            *head = temp;    
             return;
         }
         
-        else {
-            temp->next = *head;
-            *head = temp;
-        }
+        temp->next = *head;
+        *head = temp;
         
         return;
     }
@@ -31,7 +31,6 @@ public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
     
         ListNode* head = NULL;
-        
         vector<int> v;
         
         while(list1 != NULL) {
@@ -47,7 +46,7 @@ public:
         sort(v.begin(), v.end(), greater<int>());
         
         for(auto &x : v) {
-            addNodeAtBeginning(&head, x);
+            addNodeAtBeginning(&head, x);      
         }
         
         return head;
