@@ -13,9 +13,15 @@ public:
     
         set<ListNode*> w;
         
-        while(head != NULL) {
-            if(w.find(head) != w.end())                     return true;
-            w.insert(head);
+        if(head == NULL)                        return false;
+        
+        w.insert(head);
+        
+        while(head->next != NULL) {
+            
+            if(w.find(head->next) != w.end())   return true;
+            
+            w.insert(head->next);
             head = head->next;
         }
         
