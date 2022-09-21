@@ -11,18 +11,24 @@ public:
     
     ListNode *detectCycle(ListNode *head) {
     
-        ListNode* temp = head;
-        set<ListNode*> w;
+        ListNode* res = NULL;
         
-        while(temp != NULL) {
+        if(head == NULL)                    return NULL;
+        
+        set<ListNode*> w;
+        w.insert(head);
+        
+        while(head->next != NULL) {
             
-            if(w.find(temp) != w.end())                         return temp;
+            if(w.find(head->next) != w.end()) {
+                return head->next;
+            }
             
-            w.insert(temp);
-            temp = temp->next;
+            w.insert(head);
+            head = head->next;
         }
         
-        return NULL;
+        return res;
     }
     
 };
