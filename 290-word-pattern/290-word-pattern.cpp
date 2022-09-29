@@ -54,7 +54,7 @@ public:
             res2 += to_string(u1[x]);
         }
         
-        cout << res1 << " " << res2 << endl;
+        // cout << res1 << " " << res2 << endl;
         return (res1 == res2);
     }
      
