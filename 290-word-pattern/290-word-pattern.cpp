@@ -1,54 +1,61 @@
 class Solution {
 public:
     
-    bool wordPattern(string pat, string s) {
+    bool wordPattern(string pattern, string s) {
     
-        vector<string> v;
+        map<string, int> u1;
+        map<char, int> u2;
         
-        // Breaking input into word using string stream    
+        vector<char> v;
+        int c1 = 1;
         
-        stringstream ss(s);                                          // Used for breaking words
-        string word;                                                 // To store individual words
-        
-        while(ss >> word) {
-            v.push_back(word);
-        }
-    
-        map<int, int> u;
-        vector<int> r1, r2;
-        
-        int c = 0;
-        
-        for(int i=0; i<pat.length(); i++) {
-
-            if(u[pat[i]] == 0) {
-                
-                u[pat[i]]++;
-                
-                c++;
-                u[pat[i]] = c;
-            }   
+        for(auto &x : pattern) {
             
-            r1.push_back(u[pat[i]]);
+            if(find(v.begin(), v.end(), x) == v.end()) {
+                u2[x] = c1++;
+                v.push_back(x);
+            }          
+        }
+                
+        string res1 = "", res2 = "";
+        
+        for(auto &x : pattern) {
+            res1 += to_string(u2[x]);
         }
         
-        map<string, int> u2;
-        c = 0;
         
-        for(int i=0; i<v.size(); i++) {
-           
-            if(u2[v[i]] == 0) {
-                
-                u2[v[i]]++;
-                
-                c++;
-                u2[v[i]] = c;
-            }   
+        vector<string> words;
+        string temp = "";
+        
+        for(int i=0; i<s.length(); i++) {
             
-            r2.push_back(u2[v[i]]);
+            if(s[i] != ' ') {
+                temp += s[i];   
+                if(i == s.length() - 1)                 words.push_back(temp);
+            }
+            else {
+                words.push_back(temp);
+                temp = "";
+            }
         }
         
-        return (r1 == r2);
+        c1 = 1;
+        vector<string> v2;
+        
+        for(auto &x : words) {
+            
+            if(find(v2.begin(), v2.end(), x) == v2.end()) {
+                u1[x] = c1++;
+                v2.push_back(x);
+            }  
+        }
+        
+        for(auto &x : words) {
+            res2 += to_string(u1[x]);
+        }
+        
+        cout << res1 << " " << res2 << endl;
+        return (res1 == res2);
     }
-    
+     
 };
