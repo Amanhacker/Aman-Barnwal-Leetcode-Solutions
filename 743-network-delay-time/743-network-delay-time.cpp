@@ -59,9 +59,6 @@ public:
         // Using Dijkstra Algorithm 
         dijkstra(k, adj, dist);
         
-        for(int i=1; i<=n; i++)     cout << dist[i] << " ";
-        cout << endl;
-        
         for(int i=1; i<=n; i++) {
             
             if(i != k && dist[i] == INT_MAX)                return -1;
