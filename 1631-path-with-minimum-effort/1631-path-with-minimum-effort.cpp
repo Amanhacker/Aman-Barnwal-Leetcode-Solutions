@@ -11,7 +11,7 @@ public:
     
     bool dfs(int x, int y, int n, int m, int mid, vector<vector<int>> &vis, vector<vector<int>> &mat) {
         
-        // if cur index value is equal to destination
+        // if cur index is equal to destination index
         if(x == n - 1 && y == m - 1)                  return true;
         
         vis[x][y] = 1;
