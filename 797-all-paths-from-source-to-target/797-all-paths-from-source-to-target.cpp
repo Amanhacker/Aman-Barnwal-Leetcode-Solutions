@@ -1,32 +1,47 @@
 class Solution {
 public:
 
-    void dfs(int node, vector<vector<int>> &adj, vector<vector<int>> &res, vector<int> path,  int n) {
+    void dfs(int node, int dest, vector<int> &vis, vector<int> temp, vector<vector<int>> &res, unordered_map<int, vector<int>> &adj) {
         
-        path.push_back(node);
+        temp.push_back(node);
         
-        if(node == n-1) {
-            res.push_back(path);
-            return;
+        if(node == dest) {
+            res.push_back(temp);
         }
         
-        for(int i=0; i<adj[node].size(); i++) {
-            int child = adj[node][i];
-            dfs(child, adj, res, path, n);
+        vis[node] = 1;
+        
+        for(auto &ch : adj[node]) {
+            if(vis[ch] == 0) {
+                dfs(ch, dest, vis, temp, res, adj);
+            }
         }
         
-        path.pop_back();
+        temp.pop_back();
+        vis[node] = 0;
+        
         return;
     }
     
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
     
         vector<vector<int>> res;
+        unordered_map<int, vector<int>> adj;
+        
         int n = graph.size();
         
-        vector<int> path;
-        dfs(0, graph, res, path, n);
+        for(int i=0; i<graph.size(); i++) {
+            
+            vector<int> t = graph[i];
+            for(auto &x : t)                        adj[i].push_back(x);
+            
+        }
         
+        // From node 0 to node (n - 1)
+        
+        vector<int> temp, vis(n, 0);
+        
+        dfs(0, n-1, vis, temp, res, adj);
         return res;
     }
     
