@@ -4,6 +4,7 @@ public:
     bool dfs(int node, int dest, unordered_map<int, vector<int>> &adj, vector<int> &vis) {
         
         if(node == dest)                                    return true;
+        if(vis[node] == 1)                                  return false;
         
         vis[node] = 1;
         
