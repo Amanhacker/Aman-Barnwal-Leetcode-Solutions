@@ -1,7 +1,7 @@
 class Solution {
 public:
-   
-    const int mod = 1e9 + 7;
+    
+   const int mod = 1e9 + 7;
     
     int countPaths(int n, vector<vector<int>>& roads) {
     
