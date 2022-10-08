@@ -13,39 +13,25 @@ public:
     
     ListNode* removeElements(ListNode* head, int val) {
     
-        // Remove all elements with value val
-        ListNode* temp = head;
-        ListNode* prev = NULL;
+        if(head == NULL)                            return NULL;
         
-        if(head == NULL)                                    return NULL;
+        ListNode* t1 = head;
+        ListNode* t2 = head->next;
         
-        if(head->next == NULL) {
+        while(t1 != NULL && t2 != NULL) {
             
-            if(head->val == val)                            return NULL;
-            return head;
-        }
-        
-        while(temp != NULL) {
-            
-            while(temp != NULL && temp->val != val) {
-                prev = temp;
-                temp = temp->next;
+            if(t2->val == val) {
+                t1->next = t2->next;
+                t2 = t1->next;
             }
-           
-            // Here, temp node contains the value val, so free temp
-            if(temp != NULL && temp->val == val) {
-                
-                if(prev == NULL) {
-                    head = temp->next;
-                    temp = head;    
-                }   
-
-                else {
-                    prev->next = temp->next;
-                    temp = prev->next;
-                }
+            
+            else {
+                t1 = t1->next;
+                t2 = t2->next;
             }
         }
+        
+        if(head->val == val)                        return head->next;
         
         return head;
     }
