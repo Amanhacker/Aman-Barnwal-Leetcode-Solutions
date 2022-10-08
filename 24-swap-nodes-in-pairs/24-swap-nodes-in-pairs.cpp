@@ -15,15 +15,14 @@ public:
     
         ListNode* res = head;
         
-        if(res == NULL)                                     return res;
+        if(res == NULL)                         return NULL;
         
         while(head != NULL && head->next != NULL) {
             
             ListNode* temp = head->next;
-            swap(temp->val, head->val);
+            swap(head->val, temp->val);
             
-            ListNode* t2 = temp->next;
-            head = t2;
+            head = temp->next;
         }
         
         return res;
