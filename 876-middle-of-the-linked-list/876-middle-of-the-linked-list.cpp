@@ -13,22 +13,31 @@ public:
     
     ListNode* middleNode(ListNode* head) {
     
+        if(head == NULL)                    return head;
+        
+        int len = 0;
         ListNode* t = head;
         
-        if(head->next == NULL)                                  return head;
-        
-        // Using Slow and Fast Pointers
-        
-        ListNode* slow = head;
-        ListNode* fast = head->next->next;
-        
-        while(fast != NULL && fast->next != NULL) {
-            fast = fast->next->next;
-            slow = slow->next;
+        while(t != NULL) {
+            len++;
+            t = t->next;
         }
         
-        // Here, slow node is one node before the middle node
-        return slow->next;
+        int midLen = len / 2;
+        int i = 0;
+        
+        ListNode* t1 = head;
+        ListNode* t2 = head->next;
+        
+        while(i < midLen) {
+            
+            t1 = t1->next;
+            t2 = t2->next;
+            
+            i++;    
+        }
+        
+        return t1;
     }
     
 };
