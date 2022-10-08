@@ -1,29 +1,29 @@
 class Solution {
 public:
     
-    string helper(string s) {
-        
-        stack<char> w;
-        
-        for(auto it : s) {
-            
-            if(it != '#')                      w.push(it);
-            else if(w.empty() == false)        w.pop();
-        }
-        
-        string ans = "";
-        
-        while(w.empty() == false) {
-            ans.push_back(w.top());
-            w.pop();
-        }
-        
-        return ans;
-    }
-    
     bool backspaceCompare(string s, string t) {
     
-        return ( helper(s) == helper(t) );
+        stack<char> w1, w2; 
+        
+        for(auto &x : s) {
+            
+            if(x == '#') {
+                if(w1.size() > 0)                       w1.pop();
+            }
+            
+            else                                        w1.push(x);
+        }
+        
+        for(auto &x : t) {
+            
+            if(x == '#') {
+                if(w2.size() > 0)                       w2.pop();
+            }
+            
+            else                                        w2.push(x);
+        }
+        
+        return (w1 == w2);
     }
     
 };
