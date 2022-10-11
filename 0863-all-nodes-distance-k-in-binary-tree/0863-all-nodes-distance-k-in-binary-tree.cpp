@@ -56,7 +56,6 @@ public:
 
                 dist[ch] = dist[src] + 1;
                 dfs(ch, adj, dist, vis);
-                //cout << ch << " " << dist[ch] << endl;
             }
         }
         
