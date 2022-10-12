@@ -61,9 +61,7 @@ public:
         string str;
         
         getline(ss, str, ',');
-        int rootVal = stoi(str);
-        
-        root = new TreeNode(rootVal);
+        root = new TreeNode(stoi(str));
         
         queue<TreeNode*> q;
         q.push(root);
@@ -84,8 +82,7 @@ public:
                 
                 else {
                     
-                    int leftVal = stoi(str);
-                    TreeNode* leftNode = new TreeNode(leftVal);
+                    TreeNode* leftNode = new TreeNode(stoi(str));
                     temp->left = leftNode;
                     
                     q.push(leftNode);
@@ -98,8 +95,7 @@ public:
                 
                 else {
                     
-                    int rightVal = stoi(str);
-                    TreeNode* rightNode = new TreeNode(rightVal);
+                    TreeNode* rightNode = new TreeNode(stoi(str));
                     temp->right = rightNode;
                     
                     q.push(rightNode);
