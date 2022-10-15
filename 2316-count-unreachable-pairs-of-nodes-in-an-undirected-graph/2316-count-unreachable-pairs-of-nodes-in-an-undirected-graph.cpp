@@ -27,7 +27,6 @@ public:
         }        
         
         vector<int> vis(n, 0);
-        vector<long long> ccCountNodes;
         
         // No of total pairs
         count = ( (long long)n * (n-1) )/2;
@@ -39,24 +38,10 @@ public:
                 long long nodesCount = 0;
                 dfs(i, adj, vis, nodesCount);
                 
+                // No of pairs formed by this connected components which are reachable from each other, so we need to subtract this
                 count -= (nodesCount * (nodesCount - 1) ) / 2;
-                
-                
-                // for(auto &x : ccCountNodes) {
-                //     count += x * nodesCount; 
-                // }
-                
-                // ccCountNodes.push_back(nodesCount);   
             }
         }
-        
-//         int n1 = ccCountNodes.size();
-        
-//         for(int i=0; i<n1-1; i++) {
-//             for(int j=i+1; j<n1; j++) {
-//                 count += ccCountNodes[i] * ccCountNodes[j];
-//             }
-//         }
         
         return count;
     }
