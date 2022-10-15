@@ -1,6 +1,7 @@
 class Solution {
 public:
     
+    // 1st arg - Time taken, 2nd arg - Whether this node has any of its children which has apples
     pair<int, int> dfs(int node, int par, unordered_map<int, vector<int>> &adj, vector<bool> &hasApple) {
         
         pair<int, int> v = {0, hasApple[node]};
