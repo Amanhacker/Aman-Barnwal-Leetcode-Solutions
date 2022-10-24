@@ -4,6 +4,7 @@ public:
     // Top, right, down, left
     // (-1, 0), (0, 1), (1, 0), (0, -1)
     
+    // Only right, and down direction will work
     int dx[4] = {0, 1};
     int dy[4] = {1, 0};
     
