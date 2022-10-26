@@ -12,6 +12,7 @@
 class Solution {
 public:
 
+    // dfs(node) is the excess number of coins in the subtree at or below this node
     int dfs(TreeNode* node, int &count) {
         
         if(node == NULL)                        return 0;
