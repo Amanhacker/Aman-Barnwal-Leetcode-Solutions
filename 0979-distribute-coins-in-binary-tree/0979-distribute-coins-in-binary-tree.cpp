@@ -22,7 +22,7 @@ public:
         
         count += abs(l) + abs(r);
         
-        return node->val + (l + r - 1);
+        return (node->val + l + r) - 1;
     }
     
     int distributeCoins(TreeNode* root) {
