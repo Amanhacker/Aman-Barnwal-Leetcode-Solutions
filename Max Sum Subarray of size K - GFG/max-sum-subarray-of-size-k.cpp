@@ -1,23 +1,21 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h> 
 using namespace std; 
 
- // } Driver Code Ends
+// } Driver Code Ends
 class Solution{   
 public:
     
-    int maximumSumSubarray(int k, vector<int> &a , int n){
-        
-        int maxi = INT_MIN;
-        int sum = 0;
+    long maximumSumSubarray(int k, vector<int> &a , int n){
+    
+        long maxi = INT_MIN;
         
         int i = 0, j = 0;
+        long sum = 0;
         
         while(j < n) {
             
             sum += a[j];
-            
-            // Window size = (j - i + 1)
             
             if(j - i + 1 < k) {
                 j++;
@@ -26,10 +24,8 @@ public:
             else if(j - i + 1 == k) {
                 
                 maxi = max(maxi, sum);
+                sum -= a[i];
                 
-                sum -= a[i];                    // Subtract the leftmost from the window, since we move to right
-                
-                // Move the sliding window one to the right
                 i++;
                 j++;
             }
@@ -37,9 +33,10 @@ public:
         
         return maxi;
     }
+    
 };
 
-// { Driver Code Starts.
+//{ Driver Code Starts.
 int main() 
 { 
     int t;
@@ -58,4 +55,5 @@ int main()
         cout << ob.maximumSumSubarray(K,Arr,N) << endl;
     }
     return 0; 
-}   // } Driver Code Ends
+} 
+// } Driver Code Ends
