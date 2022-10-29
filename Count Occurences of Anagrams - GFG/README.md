@@ -1,7 +1,6 @@
 # Count Occurences of Anagrams
-## Medium 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given a word <strong>pat</strong>&nbsp;and a text <strong>txt</strong>. Return the count of the occurences of anagrams of the word in the text.</span></p>
+## Medium
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a word <strong>pat</strong>&nbsp;and a text <strong>txt</strong>. Return the count of the occurences of anagrams of the word in the text.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
@@ -34,5 +33,4 @@ Complete the function <strong>search()</strong>&nbsp;which takes two strings&nbs
 Both string contains lowercase english letters.</span></p>
 
 <p>&nbsp;</p>
- <p></p>
-            </div>
+</div>
