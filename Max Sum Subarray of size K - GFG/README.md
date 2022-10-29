@@ -1,7 +1,6 @@
 # Max Sum Subarray of size K
 ## Easy
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array of integers Arr of size <strong>N</strong> and a number <strong>K</strong>. Return&nbsp;the maximum sum of a subarray of size K.</span></p>
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array of integers Arr of size <strong>N</strong> and a number <strong>K</strong>. Return&nbsp;the maximum sum of a subarray of size K.</span></p>
 
 <p>&nbsp;</p>
 
@@ -44,8 +43,7 @@ Arr = [100, 200, 300, 400]</span>
 
 <p><br>
 <span style="font-size:18px"><strong>Constraints:</strong><br>
-1&lt;=N&lt;=10<sup>5</sup><br>
-1&lt;=K&lt;=N</span><br>
+1&lt;=N&lt;=10<sup>6</sup></span><br>
+<span style="font-size:18px">1&lt;=K&lt;=N</span><br>
 &nbsp;</p>
- <p></p>
-            </div>
+</div>
