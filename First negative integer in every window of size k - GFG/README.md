@@ -1,7 +1,6 @@
 # First negative integer in every window of size k
-## Easy 
-<div class="problem-statement">
-                <p></p><p><span style="font-size:18px">Given an array <strong>A[] </strong>of size <strong>N</strong> and a positive integer <strong>K</strong>, find the first negative integer for each and every window(contiguous subarray) of size <strong>K</strong>.</span></p>
+## Easy
+<div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array <strong>A[] </strong>of size <strong>N</strong> and a positive integer <strong>K</strong>, find the first negative integer for each and every window(contiguous subarray) of size <strong>K</strong>.</span></p>
 
 <p>&nbsp;</p>
 
@@ -44,5 +43,4 @@ You don't need to read input or print anything. Your task is to complete the fun
 1 &lt;= N &lt;= 10<sup>5</sup><br>
 -10<sup>5</sup> &lt;= A[i] &lt;= 10<sup>5</sup><br>
 1 &lt;= K &lt;= N</span></p>
- <p></p>
-            </div>
+</div>
