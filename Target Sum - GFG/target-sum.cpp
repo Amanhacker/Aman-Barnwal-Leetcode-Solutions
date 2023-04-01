@@ -11,40 +11,48 @@ using namespace std;
 class Solution {
   public:
     
+    int knapsack(vector<int> &a, int n, int sum) {
+
+        vector<vector<int>> dp(n + 1, vector<int>(sum + 1, 0));
+
+        for(int i=0; i<=n; i++)                 dp[i][0] = 1;
+        for(int j=1; j<=sum; j++)               dp[0][j] = 0;
+
+        for(int i=1; i<=n; i++) {
+            for(int j=1; j<=sum; j++) {
+
+                if(a[i-1] == 0)                 dp[i][j] = dp[i-1][j];
+                else if(a[i-1] <= j)            dp[i][j] = dp[i-1][j-a[i-1]] + dp[i-1][j];
+                else                            dp[i][j] = dp[i-1][j];
+            }
+        }
+
+        return dp[n][sum];
+    }
+    
     int findTargetSumWays(vector<int>&a, int target) {
         
         int n = a.size();
-        
-        // Assign '+' or '-' sign before an element of array
-        
+
+        int sum = 0, countZeroes = 0;
+
+        for(auto &x : a) {
+            if(x == 0)                                 countZeroes++;
+            sum += x;
+        }   
+
+        if(target > sum || target < -sum)              return 0;
+        if( (target + sum) % 2 != 0 )                  return 0;
+
         // s1 + s2 = sum
         // s1 - s2 = target
-        int sum = 0;
-        
-        for(int i=0; i<n; i++)                  sum += a[i];
-        
+
         // s1 = (sum + target) / 2
-        
-         if(n == 0 || n == 1)                  return (sum == abs(target)) ? 1 : 0;
-        
-        if( (sum + target) % 2 != 0 || sum < abs(target) ){
-            return 0;
-        }
-        
-        int s = (sum + target) / 2;
-        
-        vector<vector<int>> dp(n + 1, vector<int>(s + 1, 0));
-        
-        for(int i=0; i<=n; i++)                 dp[i][0] = 1;
-        
-        for(int i=1; i<=n; i++) {
-            for(int j=0; j<=s; j++) {
-                if(a[i-1] <= j)                 dp[i][j] = dp[i-1][j-a[i-1]] + dp[i-1][j];
-                else if(a[i-1] > j)             dp[i][j] = dp[i-1][j];
-            }
-        }
-        
-        return dp[n][s];
+
+        int subsetSumReq = (sum + target) / 2;
+
+        int res = knapsack(a, n, subsetSumReq);
+        return (1 << countZeroes) * res;
     
     }
     
