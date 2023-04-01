@@ -7,53 +7,52 @@ class Solution{
 
   public:
 	
-    int knapsack(int a[], int n, int target) {
-
-        // Using DP
-        vector<vector<bool>> dp(n + 1, vector<bool>(target + 1, 0));
-
-        // Base Condition
-        for(int i=0; i<=n; i++)                     dp[i][0] = 1;
-        for(int j=1; j<=target; j++)                dp[0][j] = 0;
-
-        for(int i=1; i<=n; i++) {
-            for(int j=1; j<=target; j++) {
-
-                if(a[i-1] <= j)                     dp[i][j] = max(dp[i-1][j-a[i-1]], dp[i-1][j]);
-                else                                dp[i][j] = dp[i-1][j];
-            }
-        }
-
-        for(int j=target/2; j>=0; j--) {
-            if(dp[n][j] == 1)                       return target - 2 * j;
-        }
-        
-        return -1;
-    }
-    
 	int minDifference(int a[], int n)  { 
 	    
-        int sum = 0;
-
-        if(n <= 0)                              return 0;
-
-        for(int i=0; i<n; i++)                  sum += a[i];
-
-        // s1 + s2 = sum
-        // s2 - s1 = min
-
-        // Assuming s2 > s1
-
-        // s1 + s1 + min = range
-        // min = range - 2s1
-
-        // range - 2*s1 > 0
-        // s1 < range / 2
-
-        // For min value of "min", sum should be maximum 
-        
-        return knapsack(a, n, sum);
+	    // Non-negative numbers
+	    
+	    // Divide the array into 2 sets - S1, S2 such that abs(s1 - s2) = min
+	    
+	    // Assume, s1 > s2
+	    
+	    // s1 + s2 = Range
+	    // s1 - s2 = diff
+	    
+	    // s1 = (sum + diff) / 2
+	    
+	    // s1 - (sum - s1) = diff
+	    // 2 * s1 - Range = diff
+	    
+	    // Range - s2 - s2 = diff
+	    // Range - 2*s2 = diff
+	    
+	    // Range - 2*s2 > 0
+	    // s2 < Range / 2
+	       
+	   int sum = 0;
+	   for(int i=0; i<n; i++)               sum += a[i];
+	   
+	   vector<vector<int>> dp(n + 1, vector<int>(sum + 1, 0));
+	   
+	   for(int i=0; i<=n; i++)              dp[i][0] = 1;
+	   for(int j=1; j<=sum; j++)            dp[0][j] = 0;
+	   
+	   for(int i=1; i<=n; i++) {
+	       for(int j=1; j<=sum; j++) {
+	           if(a[i-1] <= j)              dp[i][j] = max(dp[i-1][j-a[i-1]], dp[i-1][j]);
+	           else                         dp[i][j] = dp[i-1][j];
+	       }
+	   }
+	   
+	   for(int j=sum/2; j>=0; j--) {
+	       if(dp[n][j] == 1) {
+	           return (sum - 2*j);
+	       }
+	   }   
+	
+	   return -1;
 	} 
+	
 };
 
 
