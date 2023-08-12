@@ -6,15 +6,13 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
     public:
-   
-    int lenOfLongSubarr(int a[],  int n , int k) { 
+    
+    int lenOfLongSubarr(int a[], int n, int k) { 
         
-        int maxLen = 0;
-        
-        map<int, int> mp;
-        int sum = 0;
-        
-        for(int i=0; i<n; i++) {
+        unordered_map<int, int> mp; 
+        int sum = 0, maxLen = 0; 
+      
+        for(int i=0; i<n; i++) { 
             
             // Using Prefix Sum Technique
             sum += a[i]; 
@@ -27,12 +25,13 @@ class Solution{
       
             // Check if 'sum - k' is present in map or not 
             if(mp.find(sum - k) != mp.end()) { 
-               maxLen = max(maxLen, i - mp[sum - k]); 
-            }
-        }
+                maxLen = max(maxLen, i - mp[sum - k]); 
+            } 
+        } 
         
         return maxLen;
-    }   
+    } 
+    
 
 };
 
