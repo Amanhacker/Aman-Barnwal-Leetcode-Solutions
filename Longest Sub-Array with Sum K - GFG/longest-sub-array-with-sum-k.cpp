@@ -12,22 +12,18 @@ class Solution{
         unordered_map<int, int> mp; 
         int sum = 0, maxLen = 0; 
       
-        for(int i=0; i<n; i++) { 
+        for(int i=0; i<n; i++) {
             
-            // Using Prefix Sum Technique
-            sum += a[i]; 
-      
-            // When subarray starts from index '0' 
-            if(sum == k)                                           maxLen = i + 1; 
-      
-            // Make an entry for 'sum' if it is not present in map 
-            if(mp.find(sum) == mp.end())                           mp[sum] = i; 
-      
-            // Check if 'sum - k' is present in map or not 
-            if(mp.find(sum - k) != mp.end()) { 
-                maxLen = max(maxLen, i - mp[sum - k]); 
-            } 
-        } 
+            sum += a[i];
+            
+            if(sum == k)                        maxLen = i + 1;
+            
+            if(mp.find(sum) == mp.end())        mp[sum] = i;
+            
+            if(mp.find(sum - k) != mp.end()) {
+                maxLen = max(maxLen, i - mp[sum - k]);
+            }
+        }
         
         return maxLen;
     } 
